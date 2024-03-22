@@ -10,7 +10,7 @@ const Show = require('./models/showModel');
 const Watchlist = require('./models/watchlist');
 const app = express();
 const corsConfig = {
-  origin: 'http://localhost:5173',
+  origin: '*',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }
