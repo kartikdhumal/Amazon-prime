@@ -37,7 +37,6 @@ function Watch() {
           const firstEpisode = lastSeason.episodes[0];
           setsdata(data);
           setIsMovie(data.isSeries);
-          console.log(isMovie);
           setShowData(firstEpisode.video);
           setSeasons(data.seasons);
           setEpisodes(lastSeason.episodes);

@@ -15,7 +15,8 @@ import Home from './Home'
 import MyShows from './MyShows'
 import MyMovies from './MyMovies'
 import MyList from './MyList'
-import Latest from './Latest'
+import Categories from './Categories'
+import Showbycategory from './Showbycategory'
 
 function AdminResult() {
   return (
@@ -25,15 +26,16 @@ function AdminResult() {
         <Route path="/register" element={<Register/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/watch/:id" element={<Watch/>} />
-        <Route path="/mylist" element={<MyList/>} />
+        <Route path="/watchlist" element={<MyList/>} />
         <Route path="/myshows" element={<MyShows/>} />
-        <Route path="/latest" element={<Latest/>} />
+        <Route path="/categories" element={<Categories/>} />
         <Route path="/mymovies" element={<MyMovies/>} />
         <Route path="/admin" element={<Main />} />
         <Route path="/homepage" element={<Home />} />
         <Route path="/editprofile/:id" element={<Editprofile />} />
         <Route path="/shows" element={ <Shows />} />
         <Route path="/editshow/:id" element={ <Editshow />} />
+        <Route path="/showbycategory/:genre" element={ <Showbycategory />} />
         <Route path="/deleteshow/:id" element={ <Deleteshow />} />
         <Route path="/deleteuser/:id" element={ <Deleteuser />} />
         <Route path="*" element={<Pagenotfound />} />

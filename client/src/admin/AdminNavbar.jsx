@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './navbar.scss'
+import './addnavbar.scss'
 import netflix from '../images/amazonprime.png'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import MenuIcon from '@mui/icons-material/Menu';

@@ -50,14 +50,68 @@ function List(props) {
             {
               isLoading ? <><div className="container"> Loading.. </div></> : <>
                 <div className="container" ref={listRef}>
-                {moviedata.filter((show) => show.genre === "crime").map((show, index) => (
-                  <NavLink to={`/watch/${show._id}`} key={index}>
-                    <ListItem data={show} />
-                  </NavLink>
-                ))}
+                  {moviedata.filter((show) => show.genre === "crime").map((show, index) => (
+                      <ListItem data={show} />
+                  ))}
                 </div>
               </>
             }
+            <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
+          </div>
+        </div>
+      ) : props.type == "categoryseries" ? (
+        <div>
+          <span className="listTitle">
+            {props.title}
+          </span>
+          <div className="wrapper">
+            <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
+            {isLoading ? (
+              <div className="container"> Loading.. </div>
+            ) : (
+              <div className="container" ref={listRef}>
+                {moviedata.filter((show) => show.genre === props.genre && show.isSeries).length === 0 ? (
+                  <div>No Shows</div>
+                ) : (
+                  moviedata
+                    .filter((show) => show.genre === props.genre && show.isSeries)
+                    .map((show, index) => (
+                      
+                        <ListItem data={show} />
+                      
+                    ))
+                )}
+              </div>
+            )}
+
+            <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
+          </div>
+        </div>
+      ) : props.type == "categorymovies" ? (
+        <div>
+          <span className="listTitle">
+            {props.title}
+          </span>
+          <div className="wrapper">
+            <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
+            {isLoading ? (
+              <div className="container"> Loading.. </div>
+            ) : (
+              <div className="container" ref={listRef}>
+                {moviedata.filter((show) => show.genre === props.genre && !show.isSeries).length === 0 ? (
+                  <div>No Shows</div>
+                ) : (
+                  moviedata
+                    .filter((show) => show.genre === props.genre && !show.isSeries)
+                    .map((show, index) => (
+                      
+                        <ListItem data={show} />
+                      
+                    ))
+                )}
+              </div>
+            )}
+
             <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
           </div>
         </div>
@@ -71,9 +125,9 @@ function List(props) {
             {isLoading ? <><div className="container"> Loading.. </div></> : <>
               <div className="container" ref={listRef}>
                 {moviedata.filter((show) => show.genre === "sports").map((show, index) => (
-                  <NavLink to={`/watch/${show._id}`} key={index}>
+                  
                     <ListItem data={show} />
-                  </NavLink>
+                  
                 ))}
 
               </div>
@@ -91,10 +145,10 @@ function List(props) {
             <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
             {isLoading ? <><div className="container"> Loading.. </div></> : <>
               <div className="container" ref={listRef}>
-              {moviedata.filter((show) => show.genre === "romance").map((show, index) => (
-                  <NavLink to={`/watch/${show._id}`} key={index}>
+                {moviedata.filter((show) => show.genre === "romance").map((show, index) => (
+                  
                     <ListItem data={show} />
-                  </NavLink>
+                  
                 ))}
               </div>
             </>}
@@ -112,7 +166,7 @@ function List(props) {
             {isLoading ? <><div className="container"> Loading.. </div></> : <>
               <div className="container" ref={listRef}>
                 {moviedata.filter((show, index) => index % 2 == 0).reverse().map((show, index) => (
-                  <NavLink to={`/watch/${show._id}`}>  <ListItem key={index} data={show} /> </NavLink>
+                    <ListItem key={index} data={show} /> 
                 ))}
               </div>
             </>}
@@ -129,7 +183,7 @@ function List(props) {
             {isLoading ? <><div className="container"> Loading.. </div></> : <>
               <div className="container" ref={listRef}>
                 {moviedata.filter((show) => show.genre === "crime" || show.genre === "thriller" || show.genre === "drama").map((show, index) => (
-                  <NavLink to={`/watch/${show._id}`}>  <ListItem key={index} data={show} /> </NavLink>
+                    <ListItem key={index} data={show} /> 
                 ))}
               </div>
             </>}
@@ -151,9 +205,9 @@ function List(props) {
                     .map((show, index) => {
                       if (index % 6 == 0) {
                         return (
-                          <NavLink to={`/watch/${show._id}`}>
+                          
                             <ListItem key={index} data={show} />
-                          </NavLink>
+                          
                         );
                       } else {
                         return null;
@@ -175,7 +229,7 @@ function List(props) {
                 <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
                 <div className="container" ref={listRef}>
                   {moviedata.filter((show, index) => show.isSeries === true && show.genre === props.genre).map((show, index) => (
-                    <NavLink to={`/watch/${show._id}`}>  <ListItem key={index} data={show} /> </NavLink>
+                      <ListItem key={index} data={show} /> 
                   ))}
                 </div>
                 <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
@@ -195,7 +249,7 @@ function List(props) {
                 <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
                 <div className="container" ref={listRef}>
                   {moviedata.filter((show, index) => [20, 19, 18, 17, 16, 15, 14, 13, 12, 11].includes(index) && show.isSeries === true).map((show, index) => (
-                    <NavLink to={`/watch/${show._id}`}>  <ListItem key={index} data={show} /> </NavLink>
+                      <ListItem key={index} data={show} /> 
                   ))}
                 </div>
                 <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
@@ -212,7 +266,7 @@ function List(props) {
                 <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
                 <div className="container" ref={listRef}>
                   {moviedata.filter((show, index) => show.isSeries === true && show.genre === props.genre).reverse().map((show, index) => (
-                    <NavLink to={`/watch/${show._id}`}>  <ListItem key={index} data={show} /> </NavLink>
+                      <ListItem key={index} data={show} /> 
                   ))}
                 </div>
                 <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
@@ -231,7 +285,7 @@ function List(props) {
                 <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
                 <div className="container" ref={listRef}>
                   {moviedata.filter((show, index) => [30, 27, 24, 21, 18, 15, 12, 0].includes(index) && show.isSeries === true).map((show, index) => (
-                    <NavLink to={`/watch/${show._id}`}>  <ListItem key={index} data={show} /> </NavLink>
+                      <ListItem key={index} data={show} /> 
                   ))}
                 </div>
                 <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
@@ -248,7 +302,7 @@ function List(props) {
                 <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
                 <div className="container" ref={listRef}>
                   {moviedata.filter((show, index) => show.isSeries === true && show.genre === props.genre).map((show, index) => (
-                    <NavLink to={`/watch/${show._id}`}>  <ListItem key={index} data={show} /> </NavLink>
+                      <ListItem key={index} data={show} /> 
                   ))}
                 </div>
                 <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
@@ -271,9 +325,9 @@ function List(props) {
                     .map((show, index) => {
                       if (index % 4 === 0) {
                         return (
-                          <NavLink to={`/watch/${show._id}`}>
+                          
                             <ListItem key={index} data={show} />
-                          </NavLink>
+                          
                         );
                       } else {
                         return null;
@@ -297,7 +351,7 @@ function List(props) {
                 <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
                 <div className="container" ref={listRef}>
                   {moviedata.filter((show, index) => show.isSeries === false && show.genre === props.genre).map((show, index) => (
-                    <NavLink to={`/watch/${show._id}`}>  <ListItem key={index} data={show} /> </NavLink>
+                      <ListItem key={index} data={show} /> 
                   ))}
                 </div>
                 <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
@@ -316,7 +370,7 @@ function List(props) {
                 <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
                 <div className="container" ref={listRef}>
                   {moviedata.reverse().map((show, index) => (
-                    <NavLink to={`/watch/${show._id}`}>  <ListItem key={index} data={show} /> </NavLink>
+                      <ListItem key={index} data={show} /> 
                   ))}
                 </div>
                 <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
@@ -333,7 +387,7 @@ function List(props) {
                 <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
                 <div className="container" ref={listRef}>
                   {moviedata.filter((show, index) => show.isSeries === false && show.genre === props.genre).reverse().map((show, index) => (
-                    <NavLink to={`/watch/${show._id}`}>  <ListItem key={index} data={show} /> </NavLink>
+                      <ListItem key={index} data={show} /> 
                   ))}
                 </div>
                 <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
@@ -352,7 +406,7 @@ function List(props) {
                 <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
                 <div className="container" ref={listRef}>
                   {moviedata.filter((show) => show.isSeries === false).map((show, index) => (
-                    <NavLink to={`/watch/${show._id}`}>  <ListItem key={index} data={show} /> </NavLink>
+                      <ListItem key={index} data={show} /> 
                   ))}
                 </div>
                 <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
@@ -369,7 +423,7 @@ function List(props) {
                 <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
                 <div className="container" ref={listRef}>
                   {moviedata.filter((show, index) => show.isSeries === false && show.genre === props.genre).map((show, index) => (
-                    <NavLink to={`/watch/${show._id}`}>  <ListItem key={index} data={show} /> </NavLink>
+                      <ListItem key={index} data={show} /> 
                   ))}
                 </div>
                 <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
