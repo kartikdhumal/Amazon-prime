@@ -7,7 +7,8 @@ var cors = require('cors');
 const User = require('./models/userModel');
 const bodyParser = require('body-parser');
 const Show = require('./models/showModel');
-const Watchlist = require('./models/watchlist');
+const Watchlist = require('./models/Watchlist')
+
 const app = express();
 const corsConfig = {
   origin: '*',
