@@ -1,0 +1,113 @@
+.register {
+    width: 100vw;
+    height: auto;
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 0 !important;
+    top: 0 !important;
+
+    .top {
+        .wrapper {
+            padding: 20px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .logo {
+                height: 70px;
+            }
+
+            .loginButton {
+                height: 35px;
+                border-radius: 10px;
+                margin: 4px 0;
+                background-color: gold;
+                border: none;
+                font-size: 16px;
+                font-weight: 500;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+
+        p {
+            color: black;
+            font-size: 28px !important;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        form {
+            width: 325px;
+            height: 250px;
+            padding: 40px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #333333;
+            justify-content: space-around;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        h2 {
+            margin: 20px;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        #email,
+        #password {
+            font-size: 17px;
+        }
+
+        input {
+            height: 40px;
+            border-radius: 5px;
+            margin: 4px 0;
+            box-shadow: none;
+            padding-left: 10px;
+            outline-color: transparent;
+            border: 1px solid #0b0b0b;
+
+        }
+
+        .registerButton {
+            height: 35px;
+            border-radius: 10px;
+            margin: 4px 0;
+            background-color: gold;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .signintext {
+            color: rgb(6, 104, 143);
+        }
+
+        span {
+            margin: 4px 0;
+            color: #0b0b0b;
+            list-style-type: none;
+            font-size: 14px;
+        }
+    }
+}

@@ -1,0 +1,88 @@
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+.editprofile{
+    background-color:#0f171e !important;
+    height:100%;
+    overflow: hidden !important;
+    color:white;
+    margin: 0;
+    width:auto;
+    padding:0;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+
+    h5{
+        color: white;
+        font-size:30px;
+        text-align:center;
+        color: #00a8e1;
+        text-transform: uppercase;
+        width:80%; 
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .formbox{
+        width:35%;
+        display: flex;
+        flex-direction: column;
+        @include mobile {
+          width:100%;
+        }
+
+        .myform{
+            display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 20px 9px;
+
+          input {
+            height: 40px;
+            border-radius: 5px;
+            margin:5px 0;
+            font-size:16px;
+            width:80%;
+            box-shadow: none;
+            padding-left: 10px;
+            border-radius: 5px;
+            outline-color: transparent;
+
+            &:focus {
+              outline: none!important;
+              box-shadow: none!important;
+          }
+          } 
+          select{
+            width:100%;
+            padding: 9px 3px;
+            margin: 4px 1px;
+          }
+         button{
+              height: 40px;
+              width:80%;
+              border-radius: 5px;
+              background-color: #00a8e1;
+              color: white;
+              border: none;
+              font-weight: bold !important;
+              font-size: 18px;
+              margin: 6px 1px;
+              font-weight: 500;
+              cursor: pointer;
+          }
+    }
+}
+}

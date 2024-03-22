@@ -1,0 +1,193 @@
+
+:root {
+  --main-color: #0b0b0b;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin minimobile {
+  @media (max-width: 426px) {
+    @content;
+  }
+}
+
+.users{
+    background-color:#0f171e !important;
+    overflow: hidden;
+    color:white;
+    width: auto;
+    height: 100vh !important;
+    @include mobile{
+      height:100vh;
+    }
+    h5{
+      color: white;
+      font-size: 28px;
+      text-align: center;
+      width:15%;
+      @include tablet{
+        width:30%;
+      }
+  }
+    .form{
+      width: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width:100%;
+      flex-direction: column;
+      padding-top:90px;
+      padding-left: 40px;
+      padding-right: 40px;
+      @include tablet{
+        padding-left:4px;
+        width:100%;
+        padding-right:4px;
+        background-color: #0b0b0b;
+      }
+      @include mobile{
+        width:100%;
+      }
+
+      .formmy{
+        display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width:50%;
+      align-items: center;
+      padding: 20px 9px;
+      @include mobile{
+        width:90%;
+      }
+
+
+      input {
+        height: 40px;
+        border-radius: 5px;
+        background-color: rgb(236, 222, 222);
+        margin:4px 0;
+        color: black;
+        box-shadow: none;
+        padding-left: 10px;
+        outline-color: transparent;
+        border: 1px solid #0b0b0b;
+        cursor:default;
+        width:100%;
+        margin: 4px 1px;
+        font-size: 15px;
+        &::placeholder {
+          color:black;
+        }
+
+      }
+      select{
+        width:100%;
+        padding:12px 3px;
+        background-color: rgb(236, 222, 222);
+        border-radius: 5px;
+        border:none;
+        margin: 4px 1px;
+      }
+      button{
+          height: 40px;
+          width:100%;
+          border-radius: 5px;
+          background-color:#00a8e1;
+          color: white;
+          font-weight: bold !important;
+          border: none;
+          font-size: 18px;
+          margin: 4px 1px;
+          font-weight: 500;
+          cursor: pointer;
+      }
+
+      }
+    }
+    .deleteicons{
+        color: red;
+    }
+    .search{
+      width: auto;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      width:100%;
+      flex-direction: column;
+      padding-top:20px;
+      padding-left: 40px;
+      padding-right: 40px;
+      @include tablet{
+        padding-left:4px;
+        width:auto;
+        margin-bottom:10px;
+        padding-right:4px;
+        background-color: #0b0b0b;
+      }
+      @include mobile{
+        width:100%;
+      }
+      .searchbox{
+        padding:10px 10px;
+        border-radius: 10px;
+        width:50% !important;
+        @include mobile{
+          width:85% !important; 
+        }
+      }
+    }
+      table{
+        width: 100%;
+        padding-top:20px;
+      padding-left: 40px;
+      padding-right: 40px;
+      @include tablet{
+        padding: 0;
+        background-color: #0b0b0b;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      }
+      td{
+        box-shadow: 1px 0px 1px 0 white;
+        text-align: center;
+        font-size:18px;
+        padding: 4px 4px;
+        @include tablet{
+          font-size:9px;
+          padding: 0px !important;
+          height: auto;
+          width:5px !important;
+        }
+      }
+    table tr th{
+        font-size:18px;
+        color: #0b0b0b;
+        border: 1px solid white;
+        background-color: white;
+        padding: 4px 4px;
+        @include tablet{
+          padding: 0;
+          font-size:14px;
+        }
+        @include minimobile{
+          padding: 0;
+          font-size:9px;
+        }
+    }
+}

@@ -1,0 +1,127 @@
+.login {
+  width: 100vw;
+  height:auto;
+  font-family: 'Roboto', sans-serif;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0 !important;
+  top: 0 !important;
+
+  .top {
+    .wrapper {
+      padding: 20px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .logo {
+        height: 70px;
+      }
+    }
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+
+    p {
+      color: black;
+      font-size: 28px !important;
+      font-weight: bold;
+      margin-bottom: 10px;
+  }
+    #email,
+    #password {
+      font-size: 15px;
+    }
+
+    form {
+      width: 325px;
+      height:250px;
+      padding: 40px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #333333;
+      justify-content: space-around;
+
+      input {
+        height: 40px;
+        border-radius: 5px;
+        margin: 4px 0;
+        box-shadow: none;
+        padding-left: 10px;
+        outline-color: transparent;
+        border: 1px solid #0b0b0b;
+
+        &:focus {
+          outline: none !important;
+          box-shadow: none !important;
+        }
+      }
+
+      .loginButton {
+        height:35px;
+        border-radius:10px;
+        margin: 4px 0;
+        background-color: gold;
+        border: none;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      .signup {
+        height: 40px;
+        width: 100%;
+        border-radius: 5px;
+        margin: 4px 0;
+        background-color: gold;
+        border: none;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+    }
+    .newtoamazon{
+      text-align: center;
+      color:gray;
+      padding-top: 10px;
+      padding-bottom:7px;
+      font-size:12px;
+     }
+        span {
+          margin: 4px 0;
+          color: #0b0b0b;
+          list-style-type: none;
+          font-size: 12px;
+          margin-top: 8px;
+  
+          span{
+            color: rgb(6, 104, 143);
+          }
+        }
+        .createButton {
+          padding:7px;
+          background-color: white;
+          color: black !important;
+          width: 325px;
+          padding-left: 40px;
+          padding-right: 40px;
+          font-size: 13px;
+          border-radius: 10px;
+          text-align: center;
+          border: none;
+          box-shadow: 0 0 3px 0 black;
+          margin-top: 5px;
+        }
+  }
+}

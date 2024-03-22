@@ -1,0 +1,320 @@
+:root {
+  --main-color: #0f171e;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin minimobile {
+  @media (max-width: 426px) {
+    @content;
+  }
+}
+
+.shows {
+  background-color:#0f171e !important;
+  padding-top: 5% !important;
+  height: auto !important;
+  overflow: scroll;
+  color: white;
+  width: auto !important;
+
+  @include tablet {
+    height: auto !important;
+    padding-top: 15% !important;
+  }
+
+  .filetext{
+    padding:0 10px 0 10px;
+    width:40%;
+  }
+
+  #posters,#trailers,#fullvideos{
+    background-color:#f2f2f2;
+    width:90% !important;
+    height:1rem;
+  }
+ .episodediv{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+ }
+  #episodes{
+    background-color:#f2f2f2;
+    width:auto !important;
+    height:1rem;
+  }
+
+  #episodes::file-selector-button{
+    width:100% !important;
+    position:relative !important;
+    cursor: pointer !important;
+    height: auto !important;
+    border:none !important;
+    background-color:#f2f2f2 !important;
+    color:transparent !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7px !important;
+    align-items: center !important;
+    margin: 0 !important;
+  }
+  .uploadedimage {
+    width:90%;
+    height:auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: auto;
+    object-fit: cover;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d1d5db;
+  }
+  
+  .videoshow {
+    width: 100%;
+  }
+  
+  #posters::file-selector-button , #trailers::file-selector-button , #fullvideos::file-selector-button{
+    width:100% !important;
+    position:relative !important;
+    cursor: pointer !important;
+    height: auto !important;
+    border:none !important;
+    background-color:#f2f2f2 !important;
+    color:transparent !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7px !important;
+    align-items: center !important;
+    margin: 0 !important;
+  }
+  .posterimage {
+    width: 100px !important;
+  }
+  .seasons {
+    width: 100%;  
+  }
+  .casts {
+    width:100%;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .season-content , .castsbox{
+    width:90%;
+  }
+  .seasonbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  gap: 10px;
+  }
+   .seasontext , .episodetext{
+    margin:5px 0 5px 0;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+   }
+  .addepisode , .removeepisode , .removecast , .addmorecast{
+        height:auto !important;
+        width:auto;
+        border-radius: 5px;
+        background-color:#00a8e1;
+        margin:5px 0 5px 0;
+        color: white;
+        font-weight:900 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        font-size: 18px;
+        padding: 4px 4px;
+        font-weight: 500;
+        cursor: pointer;
+  }
+  .addseason , .addcast{
+    height:auto !important;
+    width:100% !important;
+    border-radius: 5px;
+    background-color: #00a8e1;
+    margin:5px 0 5px 0;
+    color: white; 
+    font-weight:900 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 18px;
+    padding:9px 3px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .addform {
+    width: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    flex-direction: column !important;
+
+    @include tablet {
+      padding-left: 4px;
+      width: 100%;
+      padding-right: 4px;
+      background-color: #0b0b0b;
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+
+
+    .formmy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 50%;
+      align-items: center;
+      padding: 20px 9px;
+
+      @include mobile {
+        width: 90%;
+      }
+
+
+      input {
+        padding:9px 3px;
+        width:100%;
+        margin: 4px 1px;
+        border-radius:5px;
+        font-size: 15px;
+
+        &::placeholder {
+          color: black;
+        }
+      }
+
+      select {
+        width: 100%;
+        padding: 12px 3px;
+        background-color: rgb(236, 222, 222);
+        border-radius: 5px;
+        border: none;
+        margin: 4px 1px;
+      }
+
+      .addshowbtn{
+        height:35px !important;
+        width: 100%;
+        border-radius: 5px;
+        background-color: #00a8e1;
+        color: white;
+        border: none;
+        font-weight: bold !important;
+        font-size: 18px;
+        margin: 4px 1px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+    }
+  }
+
+  .editicon {
+    color: skyblue;
+  }
+
+  .deleteicons {
+    color: red;
+  }
+  .search{
+    width: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width:auto !important;
+    flex-direction: column;
+    padding-top:20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    @include tablet{
+      padding-left:4px;
+      width:auto;
+      margin-bottom:10px;
+      padding-right:4px;
+      background-color: #0b0b0b;
+    }
+    @include mobile{
+      width:100%;
+    }
+    .searchbox{
+      padding:10px 10px;
+      border-radius: 10px;
+      width:50% !important;
+      @include mobile{
+        width:85% !important; 
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    @include tablet {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    h5 {
+      color: white;
+      font-size: 28px;
+      padding: 0 50px !important;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  td {
+    box-shadow: 1px 0px 1px 0 white;
+    text-align: center;
+    font-size: 18px;
+
+    @include tablet {
+      font-size: 11px !important;
+    }
+  }
+
+  table tr th {
+    font-size: 18px;
+    color: #0b0b0b;
+    border: 1px solid white;
+    background-color: white;
+
+    @include tablet {
+      font-size: 11px !important;
+    }
+  }
+}

@@ -1,0 +1,135 @@
+:root {
+  --main-color: #0b0b0b;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+.featured {
+  height: 86vh;
+  position: relative;
+
+  .category {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    align-items: center;
+
+    @include mobile {
+      top: 110px !important;
+    }
+
+    select {
+      cursor: pointer;
+      background-color: var(--main-color);
+      border: 1px solid white;
+      color: white;
+      margin-left: 20px;
+      padding: 5px;
+    }
+  }
+
+  #genre {
+    z-index: 2;
+  }
+
+  .featuredvideo {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+
+    @include mobile {
+      object-fit: cover;
+    }
+  }
+
+  .playbutton {
+    color: black;
+  }
+
+  .info {
+    width: auto;
+    position: absolute;
+    left: 50px;
+    bottom: 60px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    .line {
+      display: flex;
+
+      h1 {
+        text-transform: uppercase;
+        width: 60%;
+
+        @include tablet {
+          font-size: 25px;
+        }
+      }
+
+      img {
+        width: 59px;
+      }
+    }
+
+    .desc {
+      margin-bottom: 20px;
+      margin-top: 10px;
+      width: 35%;
+
+      @include tablet {
+        width: 60vw !important;
+      }
+    }
+
+    .buttons {
+      display: flex;
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 500;
+        margin-right: 10px;
+        cursor: pointer;
+
+        &.play {
+          background-color: white;
+          color: var(--main-color);
+        }
+
+        &.more {
+          background-color: gray;
+          color: white;
+        }
+
+        span {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
