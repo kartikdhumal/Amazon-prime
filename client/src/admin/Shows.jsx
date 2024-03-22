@@ -53,7 +53,7 @@ function Users() {
 
 
   const fetchData = () => {
-    fetch('https://netflix-clone-alpha-pearl.vercel.app/findshow')
+    fetch('https://amazon-prime-server.vercel.app/findshow')
       .then((response) => response.json())
       .then((data) => {
         getShowData(data);
@@ -62,7 +62,7 @@ function Users() {
   }
 
   const handleDelete = (recordId) => {
-    axios.delete(`https://netflix-clone-alpha-pearl.vercel.app/deleteshow/${recordId}`)
+    axios.delete(`https://amazon-prime-server.vercel.app/deleteshow/${recordId}`)
       .then((response) => {
         // alert('Show Deleted');
         fetchData();

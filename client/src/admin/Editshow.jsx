@@ -39,7 +39,7 @@ function Editshow() {
   }, [])
 
   const fetchData = async () => {
-    await fetch(`https://netflix-clone-alpha-pearl.vercel.app/getShowUpdateData/${id}`)
+    await fetch(`https://amazon-prime-server.vercel.app/getShowUpdateData/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setSeasons(data.seasons);
@@ -334,7 +334,7 @@ function Editshow() {
       };
 
       console.log("Form Data:", formData);
-      const MyData = await Axios.put(`https://netflix-clone-alpha-pearl.vercel.app/editshow/${id}`, formData);
+      const MyData = await Axios.put(`https://amazon-prime-server.vercel.app/editshow/${id}`, formData);
       if (MyData) {
         alert('Show updated');
         fetchData();

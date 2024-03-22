@@ -46,7 +46,7 @@ function Login() {
       }
 
       const response = await Axios.post(
-        'https://netflix-clone-alpha-pearl.vercel.app/login',
+        'https://amazon-prime-server.vercel.app/login',
         {
           email: email,
           password: password,

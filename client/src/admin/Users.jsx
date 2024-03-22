@@ -29,7 +29,7 @@ function Users() {
   };
 
   const fetchData = () => {
-    fetch('https://netflix-clone-alpha-pearl.vercel.app/finduser')
+    fetch('https://amazon-prime-server.vercel.app/finduser')
     .then((response) => response.json())
     .then((data) => {
       getUserData(data);
@@ -46,7 +46,7 @@ function Users() {
   }, [searchQuery, userdata]);
 
   const handleDelete = (recordId) => {
-    Axios.delete(`https://netflix-clone-alpha-pearl.vercel.app/deleteuser/${recordId}`)
+    Axios.delete(`https://amazon-prime-server.vercel.app/deleteuser/${recordId}`)
       .then((response) => {
         fetchData();
       })
@@ -129,7 +129,7 @@ function Users() {
   const handleUserSubmit = async (e) => {
     e.preventDefault();
     try {
-      const sendData = await Axios.post('https://netflix-clone-alpha-pearl.vercel.app/users', {
+      const sendData = await Axios.post('https://amazon-prime-server.vercel.app/users', {
         username: formData.username,
         email: formData.email,
         password: bcrypt.hashSync(formData.password, 8),

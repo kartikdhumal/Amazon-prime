@@ -14,7 +14,7 @@ function Featured({ type, onTypeChange }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetch(`https://netflix-clone-alpha-pearl.vercel.app/findshow/${type}`)
+      await fetch(`https://amazon-prime-server.vercel.app/findshow/${type}`)
         .then((response) => response.json())
         .then((data) => getShowData(data))
         .catch((error) => console.error(error));

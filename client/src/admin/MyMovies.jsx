@@ -23,7 +23,7 @@ function MyShows() {
   };
 
   const fetchData = async () => {
-    await fetch(`https://netflix-clone-alpha-pearl.vercel.app/findgenre/${selectedGenre}`)
+    await fetch(`https://amazon-prime-server.vercel.app/findgenre/${selectedGenre}`)
       .then((response) => response.json())
       .then((data) => dropdowndata(data))
       .catch((error) => console.error(error));

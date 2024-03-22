@@ -22,7 +22,7 @@ function Editprofile() {
   }
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://netflix-clone-alpha-pearl.vercel.app/fetcheditprofile/${id}`);
+      const response = await fetch(`https://amazon-prime-server.vercel.app/fetcheditprofile/${id}`);
       if (response.ok) {
         const data = await response.json();
         setEmail(data.email);
@@ -71,7 +71,7 @@ function Editprofile() {
     } else {
       try {
         setLoading(true);
-        const response = await fetch(`https://netflix-clone-alpha-pearl.vercel.app/editprofile/${id}`, {
+        const response = await fetch(`https://amazon-prime-server.vercel.app/editprofile/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

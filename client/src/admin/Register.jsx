@@ -55,7 +55,7 @@ function Register() {
         }
         else {
             try {
-                const mydata = await Axios.post('https://netflix-clone-alpha-pearl.vercel.app/register', {
+                const mydata = await Axios.post('https://amazon-prime-server.vercel.app/register', {
                     email: email,
                     password: bcrypt.hashSync(password, 8),
                     isAdmin: isAdmin
