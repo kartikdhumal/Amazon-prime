@@ -116,7 +116,7 @@ function Navbar() {
           <span><NavLink className="link" to={`/myshows`}><span className="navbarmainLinks">Shows</span></NavLink></span>
           <span><NavLink className="link" to={`/mymovies`}><span className="navbarmainLinks">Movies</span></NavLink></span>
           <span><NavLink className="link" to={`/categories`}><span className="navbarmainLinks">Categories</span></NavLink></span>
-          <span><NavLink className="link" to={`/watchlist`}><span className="navbarmainLinks">Watchlist</span></NavLink></span>
+          <span><NavLink className="link" to={`/watchlists`}><span className="navbarmainLinks">Watchlist</span></NavLink></span>
         </div>
         <MenuIcon className='menuicon' onClick={openNavbar} id="toggleButton" />
         <img src={netflix} alt='logo' id='middlelogo' className='middlelogo'></img>

@@ -15,7 +15,7 @@ import Users from './Users'
 import Home from './Home'
 import MyShows from './MyShows'
 import MyMovies from './MyMovies'
-import MyList from './MyList'
+import Watchlist from '../watchlist/Watchlist'
 import Categories from './Categories'
 import Showbycategory from './Showbycategory'
 
@@ -27,7 +27,6 @@ function AdminResult() {
         <Route path="/register" element={<Register/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/watch/:id" element={<Watch/>} />
-        <Route path="/watchlist" element={<MyList/>} />
         <Route path="/myshows" element={<MyShows/>} />
         <Route path="/categories" element={<Categories/>} />
         <Route path="/mymovies" element={<MyMovies/>} />
@@ -35,6 +34,7 @@ function AdminResult() {
         <Route path="/users" element={<Users/>} />
         <Route path="/homepage" element={<Home />} />
         <Route path="/editprofile/:id" element={<Editprofile />} />
+        <Route path="/watchlists" element={<Watchlist/>}/>
         <Route path="/shows" element={ <Shows />} />
         <Route path="/editshow/:id" element={ <Editshow />} />
         <Route path="/showbycategory/:genre" element={ <Showbycategory />} />

@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './home.scss';
+import '../admin/home.scss';
 import Navbar from '../Navbar';
 import ListItem from '../listitem/ListItem';
-import { NavLink } from 'react-router-dom';
-import './mycards.scss';
+import './watchlist.scss';
 
-function MyList() {
+function Watchlist() {
   const listRef = useRef();
   const [watchlists, setWatchlists] = useState([]);
   const [moviedata, getShowData] = useState([])
@@ -66,4 +65,4 @@ function MyList() {
   );
 }
 
-export default MyList;
+export default Watchlist;
