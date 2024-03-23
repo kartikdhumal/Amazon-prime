@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './listitem.scss';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AddIcon from '@mui/icons-material/Add';
-import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
-import ThumbDownAltOutlinedIcon from '@mui/icons-material/ThumbDownAltOutlined';
 import CheckIcon from '@mui/icons-material/Check';
-import Axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
 function ListItem({ index, data }) {
@@ -103,7 +100,7 @@ function ListItem({ index, data }) {
   };
 
   let totalDuration = 0;
-  if (data.seasons) {
+  if (data.seasons && data.seasons.length > 0) {
     const lastSeason = data.seasons[data.seasons.length - 1];
     if (lastSeason && lastSeason.episodes) {
       lastSeason.episodes.forEach((episode) => {
@@ -113,7 +110,7 @@ function ListItem({ index, data }) {
   }
   const hours = Math.floor(totalDuration / 3600);
   const remainingMinutes = Math.floor((totalDuration % 3600) / 60);
-  const durationDisplay = hours > 0 ? `${hours} hours ${remainingMinutes + 1} minutes` : `${remainingMinutes+1} minutes`;
+  const durationDisplay = hours > 0 ? `${hours} hours ${remainingMinutes + 1} minutes` : `${remainingMinutes + 1} minutes`;
 
   return (
     <div className='listItem' style={{ left: isHovered ? index * 225 - 50 + index * 2.5 : 0 }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
@@ -124,22 +121,22 @@ function ListItem({ index, data }) {
             <video src={data.seasons[data.seasons.length - 1].trailer} loop muted autoPlay={true}></video>
           </NavLink>
           <div className="itemInfo">
-              <div className='showtitle'>
-                <div className="maintitle">
+            <div className='showtitle'>
+              <div className="maintitle">
                 {data.title} {data.seasons.length > 1 ? data.seasons.length : ''}
-                </div>
-                <div className="iconsbox">
-                <NavLink key={data._id} to={`/watch/${data._id}`}>
-                <PlayArrowIcon className='playicon' />
-                </NavLink>
-              {isAddedToWatchlist ? (
-                <CheckIcon className='icon' onClick={handleDelete} />
-              ) : (
-                <AddIcon className='icon' onClick={handleAddToWatchlist} />
-              )}
-            </div>
               </div>
-              <NavLink key={data._id} to={`/watch/${data._id}`}>
+              <div className="iconsbox">
+                <NavLink key={data._id} to={`/watch/${data._id}`}>
+                  <PlayArrowIcon className='playicon' />
+                </NavLink>
+                {isAddedToWatchlist ? (
+                  <CheckIcon className='myicon' onClick={handleDelete} />
+                ) : (
+                  <AddIcon className='myicon' onClick={handleAddToWatchlist} />
+                )}
+              </div>
+            </div>
+            <NavLink key={data._id} to={`/watch/${data._id}`}>
               <div className="itemInfoTop">
                 <span> {data.seasons[data.seasons.length - 1].year} </span>
                 <span> {durationDisplay} </span>

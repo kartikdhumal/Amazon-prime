@@ -27,20 +27,38 @@
 .listItem {
   width: 225px;
   height: 120px;
-  margin-right:20px !important;
+  margin-right: 20px !important;
   overflow: hidden;
   padding: 0 !important;
   cursor: pointer;
   color: #f2f2f2 !important;
 
+  @include mobile {
+    width: 175px !important;
+    height: auto !important;
+
+    &:hover {
+      width: 200px !important;
+      height: 300px;
+      position: absolute !important;
+      border-radius: 10px;
+      margin-top: -10px !important;
+    }
+  }
+
   video {
     width: 100%;
-    height:150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 10px;
     position: absolute;
     top: 0;
     left: 0;
+
+    @include mobile {
+      width: auto;
+      height: 100px !important;
+    }
   }
 
   img {
@@ -48,6 +66,11 @@
     height: 100%;
     border-radius: 10px;
     object-fit: cover;
+
+    @include mobile {
+      width: auto;
+      height: 100px !important;
+    }
   }
 
   &:hover {
@@ -62,56 +85,84 @@
     img {
       height: 140px;
     }
-  .showtitle{
-    font-size:24px;
-    color: #f2f2f2;
-    width:100%;
-    display: flex;
-    align-items: center;
-    justify-content:start;
-    font-weight: bold;
-  }
-  .maintitle{
-    width: 75%;
-  }
+
+    .showtitle {
+      font-size: 24px;
+      color: #f2f2f2;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      font-weight: bold;
+
+      @include mobile {
+        font-size: 11px;
+      }
+    }
+
+    .maintitle {
+      width: 75%;
+    }
+
     .itemInfo {
       display: flex;
       background-color: #000000;
       flex-direction: column;
-      padding:20px !important;
+      padding: 20px !important;
+
       .iconsbox {
         display: flex;
-        width:25%;
-        justify-content:center;
+        width: 25%;
+        justify-content: center;
         height: 100%;
         align-items: center;
-       .playicon{
-        border: 2px solid white;
+
+        @include mobile {
+          width: auto;
+          justify-content: right;
+        }
+
+        .playicon {
+          border: 2px solid white;
           color: #f2f2f2;
           padding: 5px;
           border-radius: 50%;
           margin-right: 10px;
-          margin-top:6px;
+          margin-top: 6px;
           font-size: 16px;
-          &:hover{
+
+          @include mobile {
+            padding: 2px;
+            margin-top: 3px;
+            font-size: 13px;
+          }
+
+          &:hover {
             background-color: #00a8e1;
             border: 2px solid black;
             color: black;
             transition: 0.8s linear ease-in-out;
           }
-       }
-        .icon {
+        }
+
+        .myicon {
           border: 2px solid white;
           color: #f2f2f2;
           padding: 5px;
           border-radius: 50%;
           margin-right: 10px;
           font-size: 16px;
-          &:hover{
+
+          &:hover {
             background-color: #00a8e1;
             border: 2px solid black;
             color: black;
+            font-size: 16px !important;
             transition: 0.8s linear ease-in-out;
+          }
+
+          @include mobile {
+            padding: 0px;
           }
         }
       }
@@ -123,24 +174,38 @@
         justify-content: space-between;
         margin-bottom: 10px;
         font-size: 14px;
-        padding-top:5px;
+        padding-top: 5px;
         font-weight: 600;
         color: gray;
 
+        @include mobile {
+          width: 100% !important;
+          font-size: 10px !important;
+        }
+
         .limits {
-          background-color:#333333;
+          background-color: #333333;
           color: #f2f2f2;
           padding: 1px 3px;
           font-size: 15px;
           margin: 0 10px;
+
+          @include mobile {
+            font-size: 7px;
+            margin: 0px;
+          }
         }
       }
 
-      .description{
+      .description {
         font-size: 15px;
         color: gray !important;
         margin-bottom: 10px;
         color: #f2f2f2;
+
+        @include mobile {
+          font-size: 10px;
+        }
       }
 
       .genre {

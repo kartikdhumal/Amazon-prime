@@ -1,28 +1,59 @@
+:root {
+  --main-color: #0f171e;
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin minimobile {
+  @media (max-width: 420px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
 .list {
   width: 100%;
   margin-top: 10px;
-  
+
 
   .listTitle {
-    color:#f2f2f2;
-    font-size:24px;
-    font-weight:bold;
+    color: #f2f2f2;
+    font-size: 24px;
+    font-weight: bold;
     margin-left: 50px;
   }
 
   .wrapper {
     position: relative;
+   p{
+      width: 100%;
+      text-align: center;
+   }
     .sliderArrow {
       width: 50px;
       height: 100%;
       background-color: rgb(22, 22, 22, 0.5);
-      color: white;
+      color: #f2f2f2;
       position: absolute;
       z-index: 99;
       top: 0;
       bottom: 0;
       margin: auto;
       cursor: pointer;
+
+      @include mobile {
+        width: 35px;
+        height: 100%;
+      }
 
       &.left {
         left: 0;
@@ -32,6 +63,7 @@
         right: 0;
       }
     }
+
     .container {
       margin-left: 50px;
       display: flex;

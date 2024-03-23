@@ -1,5 +1,5 @@
 :root {
-  --main-color: #0b0b0b;
+  --main-color:#0f171e;
 }
 
 .link {
@@ -35,15 +35,6 @@
 
     @include mobile {
       top: 110px !important;
-    }
-
-    select {
-      cursor: pointer;
-      background-color: var(--main-color);
-      border: 1px solid white;
-      color: white;
-      margin-left: 20px;
-      padding: 5px;
     }
   }
 
@@ -82,7 +73,7 @@
         width: 60%;
 
         @include tablet {
-          font-size: 25px;
+          font-size:22px;
         }
       }
 
@@ -100,7 +91,28 @@
         width: 60vw !important;
       }
     }
+    .myicon {
+      border:1px solid #0f171e;
+      color: #f2f2f2;
+      padding: 5px;
+      border-radius: 50%;
+      margin-left: 5px;
+      background-color:#333333;
+      font-size:30px;
 
+      &:hover {
+        background-color: #00a8e1;
+        border:1px solid #0f171e;
+        color: black;
+        transition: 0.8s linear ease-in-out;
+      }
+
+      @include mobile {
+        padding:5px;
+        padding: 0px;
+        margin-top:5px;
+      }
+    }
     .buttons {
       display: flex;
 
@@ -111,10 +123,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 18px;
+        font-size:18px;
         font-weight: 500;
         margin-right: 10px;
         cursor: pointer;
+        @include mobile{
+          padding:5px 10px !important; 
+          padding: 0px;
+          margin:5px;
+          font-size: 14px;
+        }
 
         &.play {
           background-color: white;

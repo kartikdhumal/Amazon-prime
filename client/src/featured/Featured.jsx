@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './featured.scss'
-import mirzapur from '../images/kaalenbhaiyaa.jpg'
+import AddIcon from '@mui/icons-material/Add';
+import CheckIcon from '@mui/icons-material/Check';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import mirzapurtext from '../images/mirzapurtext.png'
-import nlogo from '../images/nlogo.png'
 import { NavLink, useNavigate } from 'react-router-dom';
 
 function Featured({ type, onTypeChange }) {
   const [moviedata, getShowData] = useState([])
   const [mydata, setMyData] = useState([])
+  const [isAddedToWatchlist, setIsAddedToWatchlist] = useState(false);
+  const [watchlists, setWatchlists] = useState([]);
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -21,6 +21,85 @@ function Featured({ type, onTypeChange }) {
     }
     fetchData();
   }, [onTypeChange])
+
+  useEffect(() => {
+    fetchWatchLists();
+    checkIfAddedToWatchlist();
+  }, []);
+
+  const checkIfAddedToWatchlist = () => {
+    for (const watchlist of watchlists) {
+      if (watchlist.showIds.includes(mydata._id)) {
+        setIsAddedToWatchlist(true);
+        return;
+      }
+    }
+    setIsAddedToWatchlist(false);
+  };
+
+  const fetchWatchLists = () => {
+    fetch('https://amazon-prime-server.vercel.app/watchlists')
+      .then((response) => response.json())
+      .then((datas) => {
+        if (datas[0]?.showIds.includes(mydata._id)) {
+          setIsAddedToWatchlist(true);
+        }
+      })
+      .catch((error) => console.error(error));
+  }
+
+  const handleDelete = () => {
+    fetch(`https://amazon-prime-server.vercel.app/deletewatchlist/${sessionStorage.myuserid}/${mydata._id}`, {
+      method: "DELETE"
+    })
+      .then((response) => {
+        if (response.ok) {
+          fetchWatchLists();
+          checkIfAddedToWatchlist();
+        } else {
+          console.error('Error deleting record:', response.statusText);
+        }
+      })
+      .catch((error) => {
+        console.error('Error deleting record:', error);
+      });
+  };
+
+
+  const handleAddToWatchlist = async () => {
+    try {
+      const userId = sessionStorage.myuserid;
+      if (!userId) {
+        alert('User ID is empty');
+        return;
+      }
+      const showId = mydata._id;
+      if (!showId) {
+        alert('Show ID is empty');
+        return;
+      }
+
+      const response = await fetch('https://amazon-prime-server.vercel.app/addwatchlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: userId,
+          showId: showId,
+        }),
+      });
+
+      if (response.ok) {
+        setIsAddedToWatchlist(true);
+      } else {
+        alert('Something is wrong');
+      }
+    } catch (error) {
+      console.error('Error adding to watchlist in client:', error);
+      alert('An error occurred while adding to watchlist');
+    }
+  };
 
   useEffect(() => {
     if (moviedata.length > 0) {
@@ -47,43 +126,19 @@ function Featured({ type, onTypeChange }) {
         return description;
       }
     } else {
-      return ''; 
+      return '';
     }
   };
-  
+
 
   return (
     <div>
       <div className="featured">
-        {/* {
-          type && (
-            <div className="category">
-              <span> {type === "movie" ? "Movies" : "Series"} </span>
-              <select onChange={handleTypeChange} name="genre" id="genre">
-                <option disabled> Genre </option>
-                <option value="adventure"> Adventure </option>
-                <option value="comedy"> Comedy </option>
-                <option value="crime"> Crime </option>
-                <option value="fantasy "> Fantasy </option>
-                <option value="histrotical"> Histrotical </option>
-                <option value="horror"> Horror </option>
-                <option value="romance "> Romance  </option>
-                <option value="sci-Fi "> Sci-Fi </option>
-                <option value="thriller"> Thriller </option>
-                <option value="western"> Western </option>
-                <option value="animation"> Animation </option>
-                <option value="drama"> Drama </option>
-                <option value="documentary"> Documentary </option>
-              </select>
-            </div>
-          )
-        } */}
         {mydata.seasons && mydata.seasons.length > 0 && (
           <video autoPlay muted loop className='featuredvideo' src={mydata.seasons[mydata.seasons.length - 1].trailer}></video>
         )}
         <div className="info">
           <div className="line">
-            {/* <img src={nlogo}></img>  */}
             {<h1> {mydata.title} </h1>}
           </div>
           <span className="desc">
@@ -94,10 +149,13 @@ function Featured({ type, onTypeChange }) {
               <PlayArrowIcon />
               <NavLink className='playbutton' to={`/watch/${mydata._id}`}> <span> Play </span> </NavLink>
             </button>
-            <button className="more">
-              <InfoOutlinedIcon />
-              <span> Info </span>
-            </button>
+            <div>
+              {isAddedToWatchlist ? (
+                <CheckIcon className='myicon' onClick={handleDelete} />
+              ) : (
+                <AddIcon className='myicon' onClick={handleAddToWatchlist} />
+              )}
+            </div>
           </div>
         </div>
       </div>
