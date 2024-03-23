@@ -113,7 +113,7 @@ function ListItem({ index, data }) {
   }
   const hours = Math.floor(totalDuration / 3600);
   const remainingMinutes = Math.floor((totalDuration % 3600) / 60);
-  const durationDisplay = hours > 0 ? `${hours} hours ${remainingMinutes} minutes` : `${remainingMinutes} minutes`;
+  const durationDisplay = hours > 0 ? `${hours} hours ${remainingMinutes + 1} minutes` : `${remainingMinutes+1} minutes`;
 
   return (
     <div className='listItem' style={{ left: isHovered ? index * 225 - 50 + index * 2.5 : 0 }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
@@ -148,7 +148,6 @@ function ListItem({ index, data }) {
               <div className="description">
                 {truncateDescription(data.description)}
               </div>
-              {/* <div className="genre"> {data.genre} </div> */}
             </NavLink>
           </div>
         </>

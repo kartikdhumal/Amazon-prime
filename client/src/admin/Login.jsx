@@ -74,7 +74,7 @@ function Login() {
           setPassword("");
           navigate('/admin');
         } else {
-          Toast('Login successful');
+          alert('Login successful');
           sessionStorage.setItem('myuserid', response.data.userid);
           sessionStorage.setItem('email', response.data.email);
           setEmail("");
