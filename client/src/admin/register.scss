@@ -1,4 +1,24 @@
-.register {
+:root {
+    --main-color: #0b0b0b;
+  }
+  
+  .link {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  @mixin tablet {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  
+  @mixin mobile {
+    @media (max-width: 480px) {
+      @content;
+    }
+  }
+  .register {
     width: 100vw;
     height: auto;
     font-family: 'Roboto', sans-serif;
@@ -58,6 +78,9 @@
             flex-direction: column;
             border: 1px solid #333333;
             justify-content: space-around;
+            @include mobile{
+                width:60% !important;
+              }
         }
 
         h1 {

@@ -99,7 +99,7 @@ function Register() {
                 <div className="container">
                     <form method='post' className='form' onSubmit={handleUserSubmit}>
                         <p> Create Account  </p>
-                        <input type='email' name='email' value={email} id='email' required onChange={handleEmail} placeholder='email address'></input>
+                        <input type='email' name='email' value={email} id='email' required onChange={handleEmail} placeholder='Email'></input>
                         <input type='password' name='password' value={password} required onChange={handlePassword} id='password' placeholder='password'></input>
                         <button type='submit' className="registerButton">
                             {isLoading ? <CircularProgress /> : "Continue"}
