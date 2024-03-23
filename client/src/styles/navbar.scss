@@ -170,7 +170,7 @@
         display: flex !important;
         justify-content: flex-start !important;
         align-items: center !important;
-        margin-right:15px;
+        margin-right: 15px;
       }
 
       @include tablet {
@@ -185,6 +185,110 @@
         justify-content: flex-start !important;
         align-items: center !important;
         margin-left: -15% !important;
+      }
+
+      .search-box {
+        width: 200px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+
+      .searchdivbox {
+        background-color:#0f171e;
+        padding: 20px;
+        position: absolute;
+        top: 100%;
+        transform: translateX(-50%);
+        left: 50%;
+        border-radius: 0px 0px 10px 10px;
+        width: 53%;
+
+        @include mobile {
+          width: 80% !important;
+          padding: 20px;
+        }
+      }
+
+      .searchinput {
+        padding: 5px;
+        width: 100%;
+        background-color: #333333;
+        font-size: 28px !important;
+        border: 2px solid #f2f2f2;
+        margin: 0px;
+        border-radius: 5px;
+
+        &:focus {
+          border: none;
+        }
+
+        &::placeholder {
+          color: #00a8e1 !important;
+        }
+
+        @include mobile {
+          padding: 0px;
+        }
+      }
+
+      .search-results {
+        position: absolute;
+        top: 250%;
+        left: 50%;
+        width: 51%;
+        transform: translateX(-50%);
+        background-color: #0f171e;
+        border: 1px solid #000000;
+        border-top: none;
+        border-radius: 5px;
+        padding:20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        @include mobile {
+          top: 235%;
+          width: 80%;
+        }
+
+        .search-result-item {
+          display: flex;
+          align-items: center;
+          justify-content:space-around;
+          margin-top:10px;
+          margin-bottom: 5px;
+          border-radius: 10px;
+          padding:7px;
+          cursor: pointer;
+          &:hover{
+            background-color: #f2f2f2;
+  
+            .resulttitle{
+              color: #0f171e !important;
+            }
+          }
+
+          .poster {
+            width:10%;
+            height: auto;
+            margin:0px;
+            padding: 0px;
+          }
+
+          .resulttitle {
+            font-size: 22px;
+            font-weight: bold;
+            color: #f2f2f2;
+            padding-left:20px;
+            width:75% !important;
+          }
+          .resultyear{
+            color:gray;
+            width:25%;
+            font-weight: bold;
+            text-align:left;
+          }
+        }
       }
 
       .account {

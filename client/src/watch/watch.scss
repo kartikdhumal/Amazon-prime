@@ -107,11 +107,12 @@
     border-radius: 10px;
     font-weight: bold;
     margin: 0 8px;
-    color: black;
+    cursor: pointer;
+    color:#0f171e;
     border: 1px solid gray;
     color: gray;
     font-size: 18px;
-    padding: 4px 8px;
+    padding: 4px 12px;
 
     .selected {
       background-color: red;

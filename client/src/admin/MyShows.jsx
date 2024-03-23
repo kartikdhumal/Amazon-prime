@@ -6,52 +6,34 @@ import './home.scss'
 import { useNavigate } from 'react-router-dom'
 
 function MyShows() {
-  const [selectedType, setSelectedType] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('');
-  const [mydata , dropdowndata ] = useState([])
+  const [moviedata, getShowData] = useState([])
 
-  const handleTypeChange = (value) => {
-    setSelectedType(value);
-  };
-  const navigate = useNavigate()
-  const handleGenreChange = (selectedGenre) => {
-    setSelectedGenre(selectedGenre); 
-    console.log(selectedGenre);
-  };
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-  const fetchData = async () =>
-  { await fetch(`https://amazon-prime-server.vercel.app/findgenre/${selectedGenre}`)
-    .then((response) => response.json())
-    .then((data) => dropdowndata(data))
-    .catch((error) => console.error(error));
+  const uniqueGenres = Array.from(new Set(moviedata.map(data => data.genre)));
+
+  const fetchData = () => {
+    fetch('https://amazon-prime-server.vercel.app/findshow')
+      .then((response) => response.json())
+      .then((data) => {
+        getShowData(data);
+      })
+      .catch((error) => console.error(error));
   }
 
-  // useEffect(()=>{
-  //   fetchData()
-  //   if (!sessionStorage.myuserid) {
-  //     navigate('/login');
-  //   }
-  //   },[selectedGenre])
   return (
     <div className='home'>
-                   <Navbar/>
-       <Featured onTypeChange={handleGenreChange} type="series" />
-      {
-        selectedGenre == "" ? (
-          <>
-          <List title="Continue to Watch" type="aseries" genre=""/>
-          <List title="Trending Now" type="bseries" genre=""/>
-          <List title="Popular on Netflix" type="cseries" genre=""/>
-          </>
-        ) : (
-          <>
-          <List title="Continue to Watch" type="aseries" genre={selectedGenre}/>
-          <List title="Trending Now" type="bseries" genre={selectedGenre}/>
-          <List title="Popular on Netflix" type="cseries" genre={selectedGenre}/>
-          </>
-        )
-      }
-    </div>
+    <Navbar />
+    <Featured type="series" />
+    {
+      uniqueGenres.map((data, index) => (
+        <List key={index} title={data} type="categoryseries" genre={data} />
+      ))
+}
+  </div>
   )
 }
 

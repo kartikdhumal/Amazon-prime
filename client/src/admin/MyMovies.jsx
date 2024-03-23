@@ -10,49 +10,33 @@ function MyShows() {
   const [selectedGenre, setSelectedGenre] = useState('');
   const navigate = useNavigate()
   const [mydata, dropdowndata] = useState([])
+  const [moviedata, getShowData] = useState([])
 
-  const handleTypeChange = (value) => {
-    setSelectedType(value);
-  };
   useEffect(() => {
-    fetchData();
+    fetchData()
   }, [])
-  const handleGenreChange = (selectedGenre) => {
-    setSelectedGenre(selectedGenre);
-    console.log(selectedGenre);
-  };
 
-  const fetchData = async () => {
-    await fetch(`https://amazon-prime-server.vercel.app/findgenre/${selectedGenre}`)
+  const uniqueGenres = Array.from(new Set(moviedata.map(data => data.genre)));
+
+  const fetchData = () => {
+    fetch('https://amazon-prime-server.vercel.app/findshow')
       .then((response) => response.json())
-      .then((data) => dropdowndata(data))
+      .then((data) => {
+        getShowData(data);
+      })
       .catch((error) => console.error(error));
   }
 
-  // useEffect(()=>{
-  //   fetchData()
-  //   if (!sessionStorage.myuserid) {
-  //     navigate('/login');
-  //   }
-  //   },[selectedGenre])
 
   return (
     <div className='home'>
       <Navbar />
-      <Featured onTypeChange={handleGenreChange} type="movie" />
+      <Featured type="series" />
       {
-        selectedGenre == "" ? (
-          <>
-            <List title="Continue to Watch" type="amovies" genre="" />
-            <List title="Trending Now" type="bmovies" genre="" />
-            <List title="Popular on Netflix" type="cmovies" genre="" />
-          </>
-        ) : (
-          <>
-            <List title="Continue to Watch" type="amovies" genre={selectedGenre} />
-            <List title="Trending Now" type="bmovies" genre={selectedGenre} />
-            <List title="Popular on Netflix" type="cmovies" genre={selectedGenre} />
-          </>
+        uniqueGenres.length > 0 && (
+          uniqueGenres.map((data, index) => (
+            <List title={data} type="categorymovies" genre={data} />
+          ))
         )
       }
     </div>

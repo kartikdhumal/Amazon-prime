@@ -1,6 +1,7 @@
 .list {
   width: 100%;
   margin-top: 10px;
+  
 
   .listTitle {
     color:#f2f2f2;
@@ -36,8 +37,6 @@
       display: flex;
       margin-top: 10px;
       width: max-content;
-      transform: translateX(0px);
-      transition: all 1s ease;
     }
   }
 }

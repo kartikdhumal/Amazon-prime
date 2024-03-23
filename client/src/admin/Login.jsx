@@ -69,14 +69,14 @@ function Login() {
         if (response.data.isadmin === true) {
           alert('Login successful');
           sessionStorage.setItem('userid', response.data.userid);
-          sessionStorage.setItem('name', response.data.name);
+          sessionStorage.setItem('email', response.data.email);
           setEmail("");
           setPassword("");
           navigate('/admin');
         } else {
-          alert('Login successful');
+          Toast('Login successful');
           sessionStorage.setItem('myuserid', response.data.userid);
-          sessionStorage.setItem('name', response.data.name);
+          sessionStorage.setItem('email', response.data.email);
           setEmail("");
           setPassword("");
           navigate('/homepage');
@@ -94,10 +94,6 @@ function Login() {
       setIsLoading(false);
     }
   };
-
-
-
-
 
   return (
     <div>

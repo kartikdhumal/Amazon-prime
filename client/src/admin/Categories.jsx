@@ -32,15 +32,14 @@ function Categories() {
       <div className='categories-container'>
         <h2 className='title'> Categories </h2>
         <div className='genres'>
-          {loading ? ( // Show loading message if loading is true
-            <div className='loading-message'>Loading...</div>
-          ) : showGenres.length === 0 ? ( // Show "No Category Found" if no categories are available
+          {loading ? (
+            <div className='loadingmessage'>Loading...</div>
+          ) : showGenres.length === 0 ? (
             <div className='no-category-message'>No Category Found</div>
           ) : (
-            // Render category links if categories are available
             showGenres.map((genre, index) => (
               <NavLink to={`/showbycategory/${genre}`} key={index} className='genre-link'>
-                <div className='genre-box'>{genre}</div>
+                <div className='boxes'>{genre}</div>
               </NavLink>
             ))
           )}

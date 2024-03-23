@@ -11,6 +11,7 @@ import Deleteuser from './Deleteuser'
 import Login from './Login'
 import Register from './Register'
 import Watch from '../watch/Watch'
+import Users from './Users'
 import Home from './Home'
 import MyShows from './MyShows'
 import MyMovies from './MyMovies'
@@ -31,6 +32,7 @@ function AdminResult() {
         <Route path="/categories" element={<Categories/>} />
         <Route path="/mymovies" element={<MyMovies/>} />
         <Route path="/admin" element={<Main />} />
+        <Route path="/users" element={<Users/>} />
         <Route path="/homepage" element={<Home />} />
         <Route path="/editprofile/:id" element={<Editprofile />} />
         <Route path="/shows" element={ <Shows />} />

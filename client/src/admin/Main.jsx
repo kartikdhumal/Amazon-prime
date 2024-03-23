@@ -37,7 +37,7 @@ function Main() {
        <AdminNavbar/>
       <div className="box">
         <div className='totalmovies'>
-          <div className="title">
+          <div className="analyticstitle">
           Total movies
             </div>
             <div className="num">
@@ -45,7 +45,7 @@ function Main() {
             </div>
         </div>
         <div className='totalseries'>
-        <div className="title">
+        <div className="analyticstitle">
           Total series
             </div>
             <div className="num">
@@ -53,7 +53,7 @@ function Main() {
             </div>
         </div>
         <div className='totalusers'>
-        <div className="title">
+        <div className="analyticstitle">
           Total users
             </div>
             <div className="num">

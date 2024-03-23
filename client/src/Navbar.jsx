@@ -1,36 +1,72 @@
 import React, { useEffect, useState } from 'react'
 import '../src/styles/navbar.scss';
 import netflix from './images/amazonprime.png'
-import MenuIcon from '@mui/icons-material/Menu';
 import avatar from './images/usericon.png'
-import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import Paper from '@mui/material/Paper';
+import CloseIcon from '@mui/icons-material/Close';
+import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import DirectionsIcon from '@mui/icons-material/Directions';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Link, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import UnauthorizeUser from './admin/UnauthorizeUser';
 
 function Navbar() {
   const navigate = useNavigate()
-  const id = sessionStorage.myuserid;
-
+  const [moviedata, getShowData] = useState([])
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [boxopened, setboxopened] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  const id = sessionStorage.myuserid;
+
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = () => {
+    fetch('https://amazon-prime-server.vercel.app/findshow')
+      .then((response) => response.json())
+      .then((data) => {
+        getShowData(data);
+      })
+      .catch((error) => console.error(error));
+  }
+
+  const handleSearchChange = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+    if (query.length === 0) {
+      setShowSearchResults(false);
+      return;
+    }
+    const filteredResults = moviedata.filter((item) =>
+      item.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setSearchResults(filteredResults);
+    setShowSearchResults(true);
   };
 
   const handleLogout = () => {
@@ -40,6 +76,12 @@ function Navbar() {
   };
   UnauthorizeUser()
 
+  const opensearchbox = () => {
+    setboxopened(true);
+  }
+  const closesearchbox  = () => {
+    setboxopened(false);
+  }
   const openNavbar = () => {
     const elementToToggle = document.getElementById('elementToToggle');
     const toggleButton = document.getElementById('toggleButton');
@@ -64,23 +106,61 @@ function Navbar() {
       elementToToggle.style.display = 'block';
     }
   }
-
   return (
     <div className={"navbar"}>
       <div className='container'>
         <div className='left' id="elementToToggle">
           <MenuIcon className='closeicon' onClick={closeNavbar} />
           <img src={netflix} alt='logo'></img>
-          <span> <NavLink className="link" to={`/homepage`}>  <span className="navbarmainLinks"> Home </span> </NavLink> </span>
-          <span> <NavLink className="link" to={`/myshows`}>  <span className="navbarmainLinks"> Shows </span> </NavLink></span>
-          <span> <NavLink className="link" to={`/mymovies`}>  <span className="navbarmainLinks"> Movies </span> </NavLink> </span>
-          <span> <NavLink className="link" to={`/categories`}>  <span className="navbarmainLinks"> Categories </span>  </NavLink></span>
-          <span> <NavLink className="link" to={`/watchlist`}>  <span className="navbarmainLinks">  Watchlist  </span></NavLink></span>
+          <span><NavLink className="link" to={`/homepage`}><span className="navbarmainLinks">Home</span></NavLink></span>
+          <span><NavLink className="link" to={`/myshows`}><span className="navbarmainLinks">Shows</span></NavLink></span>
+          <span><NavLink className="link" to={`/mymovies`}><span className="navbarmainLinks">Movies</span></NavLink></span>
+          <span><NavLink className="link" to={`/categories`}><span className="navbarmainLinks">Categories</span></NavLink></span>
+          <span><NavLink className="link" to={`/watchlist`}><span className="navbarmainLinks">Watchlist</span></NavLink></span>
         </div>
         <MenuIcon className='menuicon' onClick={openNavbar} id="toggleButton" />
         <img src={netflix} alt='logo' id='middlelogo' className='middlelogo'></img>
         <div className='right'>
-          <SearchIcon className='icon' />
+          {
+            boxopened ? <>
+              <CloseIcon className='icon' onClick={closesearchbox}/>
+            </> : <>
+              <SearchIcon className='icon' onClick={opensearchbox} />
+            </>
+          }
+          {boxopened && (
+            <div className="searchdivbox">
+              <Paper
+                component="form"
+                className="searchinput"
+                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+              >
+                <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+                  <SearchIcon sx={{ fontSize: 28 }} />
+                </IconButton>
+                <InputBase
+                  sx={{ ml: 1, flex: 1, fontSize: 22, color: '#f2f2f2' }}
+                  placeholder="Search"
+                  inputProps={{ 'aria-label': 'search google maps' }}
+                  onChange={handleSearchChange}
+                />
+              </Paper>
+            </div>
+          )}
+          {boxopened && showSearchResults && (
+            <div className="search-results">
+              {searchResults.map((result) => (
+                <div key={result.id} className="search-result-item">
+                  <img src={result.poster} className="poster" alt={result.title} />
+                  <NavLink className="resulttitle" to={`/watch/${result._id}`}>
+                    <span>{result.title}</span>
+                  </NavLink>
+                  <span className='resultyear'>{result.seasons[result.seasons.length - 1].year}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
           <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
             <Tooltip title="Profile">
               <IconButton
@@ -135,7 +215,10 @@ function Navbar() {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
             <MenuItem onClick={handleClose}>
-              <Avatar src={avatar} sx={{ width: 32, height: 32 }}></Avatar>Kartik Dhumal
+              <Avatar src={avatar} sx={{ width: 32, height: 32 }}></Avatar>
+              {
+                sessionStorage.email ? sessionStorage.email : 'user'
+              }
             </MenuItem>
             <Divider />
             <MenuItem onClick={handleClose}>
@@ -151,7 +234,6 @@ function Navbar() {
               Logout
             </MenuItem>
           </Menu>
-
         </div>
       </div>
     </div>

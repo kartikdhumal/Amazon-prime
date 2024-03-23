@@ -215,7 +215,7 @@ app.post('/login', async (req, res) => {
     if (!auth) {
       return res.send({ passwordnot: "Incorrect Password" })
     }
-    res.send({ message: "User logged in successfully", success: true, name: user.name, userid, isadmin });
+    res.send({ message: "User logged in successfully", success: true, email: user.email, userid, isadmin });
   } catch (error) {
     console.error(error);
   }

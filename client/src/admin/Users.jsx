@@ -9,7 +9,7 @@ import {
   TablePagination,
   tablePaginationClasses as classes,
 } from '@mui/base/TablePagination';
-const bcrypt = require("bcryptjs")
+import bcrypt from 'bcryptjs'
 
 function Users() {
   const [userdata, getUserData] = useState([])

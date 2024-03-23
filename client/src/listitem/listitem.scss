@@ -1,3 +1,25 @@
+:root {
+  --main-color: #0f171e;
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin minimobile {
+  @media (max-width: 420px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
 * {
   text-decoration: none;
 }
@@ -71,6 +93,12 @@
           margin-right: 10px;
           margin-top:6px;
           font-size: 16px;
+          &:hover{
+            background-color: #00a8e1;
+            border: 2px solid black;
+            color: black;
+            transition: 0.8s linear ease-in-out;
+          }
        }
         .icon {
           border: 2px solid white;

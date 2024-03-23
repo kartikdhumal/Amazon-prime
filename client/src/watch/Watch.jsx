@@ -7,6 +7,7 @@ import netflix from '../fullvideos/netflix.mp4';
 import UnauthorizeUser from '../admin/UnauthorizeUser';
 import ShakaPlayer from 'shaka-player-react';
 import 'shaka-player/dist/controls.css';
+import Loader from '../loader/Loader'
 
 function Watch() {
   const [showData, setShowData] = useState('');
@@ -18,6 +19,7 @@ function Watch() {
   const [selectedEpisode, setSelectedEpisode] = useState(null);
   const [sdata, setsdata] = useState([]);
   const [isMovie, setIsMovie] = useState();
+  const [loaded, setLoaded] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -36,6 +38,7 @@ function Watch() {
           const lastSeason = data.seasons[data.seasons.length - 1];
           const firstEpisode = lastSeason.episodes[0];
           setsdata(data);
+          setLoaded(true);
           setIsMovie(data.isSeries);
           setShowData(firstEpisode.video);
           setSeasons(data.seasons);
@@ -71,7 +74,6 @@ function Watch() {
   return (
     <div className="main">
       <div className='watch'>
-
         {selectedEpisode && (
           <h3 className='title'>
             {selectedSeason ? `${!isMovie ? '' : 'S'}${!isMovie ? '' : seasons.indexOf(selectedSeason) + 1}${!isMovie ? '' : ':E'}${!isMovie ? '' : episodes.indexOf(selectedEpisode) + 1} ${selectedEpisode.description}` : selectedEpisode.description}
@@ -80,14 +82,12 @@ function Watch() {
         <div className="back">
           <ArrowBackOutlinedIcon onClick={handleArrow} className='icon' />
         </div>
-        {isFetched ? (
+        {isFetched && isFetched && (
           <ShakaPlayer autoPlay src={showData} className="video" />
-        ) : (
-          <video src={netflix} className="video" autoPlay controls ></video>
         )}
       </div>
 
-      {isFetched && (
+      {loaded && isFetched && (
         <div className="infobox">
           <p className='stitle'> {sdata.title} {' - ' + selectedSeason.year} </p>
           <p className='sdesc'> {sdata.description} </p>
@@ -98,57 +98,53 @@ function Watch() {
         </div>
       )}
 
-
-      {
-          <>
-            <div className="seasonbox">
-              {seasons.map((season, index) => (
-                <div
-                  key={season._id}
-                  className={`season ${selectedSeason === season ? 'selected' : ''}`}
-                  onClick={() => handleSeasonClick(season)}
-                  style={{ backgroundColor: selectedSeason === season ? '#00a8e1' : 'transparent', color: selectedSeason === season ? 'black' : '' }}
-                >
-                  {
-                    !isMovie ? <> Part {index + 1} </> : <> Season {index + 1} </>
-                  }
-                </div>
-              )
-              )}
-            </div>
-
-            <div className="episodebox">
-              {episodes.map((episode, index) => (
-                <div key={episode._id} className="episode" style={{ backgroundColor: selectedEpisode === episode ? '#333333' : 'transparent' }} onClick={() => handleEpisodeClick(episode)}>
-                  <video src={episode.video} muted></video>
-                  <p className='description'>{!isMovie ? '' : `E${index + 1}-`} {episode.description}</p>
-                  <p className='duration'>{`${String(Math.floor(episode.duration / 60)).padStart(2, '0')}:${String(episode.duration % 60).padStart(2, '0')}`}</p>
-                </div>
-              ))}
-            </div>
-          </>
-      }
-
-      <div className="castbox">
-        {
-          castMembers.length > 0 && (
-            <p className="casttitle">
-              Cast
-            </p>
-          )
-        }
-        <div className='castdivs'>
-          {castMembers.map((cast, index) => (
-            <div key={index} className="castMember">
-              <img src={cast.image} alt={cast.realName} className="castImage" />
-              <div className="castname">
-                <p className="realname">{`${cast.realName}`}</p>
-                <p className="reelname">{`${cast.reelName}`}</p>
+      {loaded && (
+        <>
+          <div className="seasonbox">
+            {seasons.map((season, index) => (
+              <div
+                key={season._id}
+                className={`season ${selectedSeason === season ? 'selected' : ''}`}
+                onClick={() => handleSeasonClick(season)}
+                style={{ backgroundColor: selectedSeason === season ? '#f2f2f2' : 'transparent', color: selectedSeason === season ? '#0f171e' : '' }}
+              >
+                {!isMovie ? <> Part {index + 1} </> : <> Season {index + 1} </>}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          <div className="episodebox">
+            {episodes.map((episode, index) => (
+              <div key={episode._id} className="episode" style={{ backgroundColor: selectedEpisode === episode ? '#333333' : 'transparent' }} onClick={() => handleEpisodeClick(episode)}>
+                <video src={episode.video} muted></video>
+                <p className='description'>{!isMovie ? '' : `E${index + 1}-`} {episode.description}</p>
+                <p className='duration'>{`${String(Math.floor(episode.duration / 60)).padStart(2, '0')}:${String(episode.duration % 60).padStart(2, '0')}`}</p>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      {loaded && (
+        <div className="castbox">
+          {castMembers.length > 0 && (
+            <p className="casttitle">Cast</p>
+          )}
+          <div className='castdivs'>
+            {castMembers.map((cast, index) => (
+              <div key={index} className="castMember">
+                <img src={cast.image} alt={cast.realName} className="castImage" />
+                <div className="castname">
+                  <p className="realname">{`${cast.realName}`}</p>
+                  <p className="reelname">{`${cast.reelName}`}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
+
+      {!loaded && <Loader />}
     </div>
   );
 }

@@ -14,7 +14,7 @@ import AdminNavbar from './AdminNavbar'
 import axios from 'axios';
 import { Cloudinary } from "@cloudinary/url-gen";
 
-function Users() {
+function Shows() {
   const [moviedata, getShowData] = useState([])
   const [trailer, setTrailer] = useState('')
   const [poster, setPosterImage] = useState('')
@@ -64,7 +64,6 @@ function Users() {
   const handleDelete = (recordId) => {
     axios.delete(`https://amazon-prime-server.vercel.app/deleteshow/${recordId}`)
       .then((response) => {
-        // alert('Show Deleted');
         fetchData();
       })
       .catch((error) => {
@@ -248,7 +247,7 @@ function Users() {
     }
   `;
 
-  const handleUserSubmit = async (e) => {
+  const handleShowsubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     const seasonsData = seasons.map((season, seasonIndex) => {
@@ -478,7 +477,7 @@ function Users() {
     <div className='shows'>
       <AdminNavbar />
       <div className="addform">
-        <form className='formmy' onSubmit={handleUserSubmit}>
+        <form className='formmy' onSubmit={handleShowsubmit}>
           <div style={{ display: "flex", width: "100%", justifyContent: "center", alignItems: "center" }}>
             <label htmlFor="file-upload" className="filetext">
               Upload Poster
@@ -716,4 +715,4 @@ function Users() {
   )
 }
 
-export default Users
+export default Shows
