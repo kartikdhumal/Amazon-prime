@@ -50,7 +50,7 @@ function Register() {
             isClicked(false);
         }
         else if (password.length < 2) {
-        toast.warning('Password must be at least 2 characters long.');
+            toast.warning('Password must be at least 2 characters long.');
             setIsLoading(false);
             setPassword('');
         }

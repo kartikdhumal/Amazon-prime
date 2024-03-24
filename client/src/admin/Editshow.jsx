@@ -16,15 +16,7 @@ function Editshow() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [moviedata, getShowData] = useState([])
-  const [trailer, setTrailer] = useState(null)
   const [poster, setPosterImage] = useState(null)
-  const [video, setVideo] = useState(null)
-  const [title, setTitle] = useState()
-  const [description, setDescription] = useState()
-  const [years, setYears] = useState()
-  const [genre, setGenre] = useState()
-  const [duration, setDuration] = useState()
-  const [isSeries, setSeries] = useState()
   const [uploadingTrailer, setUploadingTrailer] = useState(false);
   const [uploadingPoster, setUploadingPoster] = useState(false);
   const [uploadingVideo, setUploadingVideo] = useState(false);
@@ -47,7 +39,6 @@ function Editshow() {
         setCastMembers(data.castMembers);
         const yearsArray = data.seasons.map(season => season.year);
         setPosterImage(data.poster);
-        console.log(data.poster);
         setSeasonYears(yearsArray);
         getShowData(data);
       })
@@ -55,7 +46,7 @@ function Editshow() {
   }
   UnauthorizeAdmin()
 
-  const handleTrailer = async (e) => {
+  const handleTrailer = async (seasonIndex , e) => {
     const file = e.target.files[0];
     if (!file) return;
     setUploadingTrailer(true);
@@ -75,9 +66,14 @@ function Editshow() {
 
       const data = await response.json();
       if (data.secure_url) {
+        const updatedSeasons = [...seasons];
+        if (!updatedSeasons[seasonIndex].trailer) {
+          updatedSeasons[seasonIndex].trailer = [];
+        }
+        updatedSeasons[seasonIndex].trailer = data.secure_url;
+        console.log(updatedSeasons[seasonIndex].trailer);
+        setSeasons(updatedSeasons);
         console.log(data.secure_url);
-        const updatedMoviedata = { ...moviedata, trailer: data.secure_url };
-        getShowData(updatedMoviedata);
       } else {
         console.error('No secure URL found in the response:', data);
       }
@@ -88,7 +84,6 @@ function Editshow() {
       setUploadingTrailer(false);
     }
   };
-
   const handlePoster = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -109,9 +104,9 @@ function Editshow() {
 
       const data = await response.json();
       if (data.secure_url) {
-        console.log('Uploaded: ' + data.secure_url); // Log the uploaded URL
+        console.log('Uploaded: ' + data.secure_url);
         setPosterImage(data.secure_url, () => {
-          console.log('Poster:', poster); // Log the updated poster state
+          console.log('Poster:', poster);
         });
       } else {
         console.error('No secure URL found in the response:', data);
@@ -406,7 +401,7 @@ function Editshow() {
                       accept="video/*"
                       id={`episodes`}
                       className='trailers'
-                      onChange={(e) => handleTrailer(seasonIndex, e)}
+                      onChange={(e) => handleTrailer(seasonIndex,e)}
                     />
                     <video className='videoshow' controls src={season.trailer}></video>
                   </div>

@@ -33,12 +33,14 @@ function Shows() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredData, setFilteredData] = useState([]);
   const [uploadingCastMemberImage, setUploadingCastMemberImage] = useState(false);
+  const [uploadingTrailer, setUploadingTrailer] = useState(false);
+  const [uploadedTrailerUrl, setUploadedTrailerUrl] = useState('');
+  const [uploadingVideo, setUploadingVideo] = useState(false);
+  const [uploadedVideoUrl, setUploadedVideoUrl] = useState('');
   const [castMembers, setCastMembers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [seasons, setSeasons] = useState([]);
-  const [uploadingTrailer, setUploadingTrailer] = useState(false);
   const [uploadingPoster, setUploadingPoster] = useState(false);
-  const [uploadingVideo, setUploadingVideo] = useState(false);
   const [seasonYears, setSeasonYears] = useState([]);
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - moviedata.length) : 0;
   const navigate = useNavigate();
@@ -96,6 +98,7 @@ function Shows() {
         updatedSeasons[seasonIndex].trailer = data.secure_url;
         setSeasons(updatedSeasons);
         console.log(data.secure_url);
+        setUploadedTrailerUrl(data.secure_url);
       } else {
         console.error('No secure URL found in the response:', data);
       }
@@ -114,14 +117,16 @@ function Shows() {
     } else {
       const filtered = moviedata.filter((movie) => {
         const isSeriesValue = movie.isSeries ? 'Series' : 'Movie';
+        const seasons = movie.seasons.map((season) => season.year);
+        const castMemberNames = movie.castMembers.map((castMember) => castMember.realName);
         return (
           movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
           movie.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
           movie.genre.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          movie.year.toString().includes(searchQuery) ||
           movie.limit.toString().includes(searchQuery) ||
-          movie.duration.toString().includes(searchQuery) ||
-          isSeriesValue.toLowerCase().includes(searchQuery.toLowerCase())
+          isSeriesValue.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          seasons.some((year) => year.toString().includes(searchQuery)) ||
+          castMemberNames.some((name) => name.toLowerCase().includes(searchQuery.toLowerCase()))
         );
       });
       setFilteredData(filtered);
@@ -178,13 +183,6 @@ function Shows() {
   const handleGenre = (e) => {
     const value = e.target.value;
     setGenre(value);
-  };
-
-  const handleYears = (e) => {
-    const value = e.target.value;
-    if (value.length === 4 && !isNaN(value)) {
-      setYears(parseInt(value));
-    }
   };
 
   const handleLimit = (e) => {
@@ -377,6 +375,7 @@ function Shows() {
         console.log(updatedSeasons[seasonIndex].episodes[episodeIndex]);
         setSeasons(updatedSeasons);
         console.log(data.secure_url);
+        setUploadedVideoUrl(data.secure_url);
       } else {
         console.error('No secure URL found in the response:', data);
       }
