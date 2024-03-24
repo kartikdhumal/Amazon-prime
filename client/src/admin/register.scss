@@ -19,18 +19,14 @@
     }
 }
 
-html {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
 
 .register {
     width: 100%;
     height: 100vh;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
     font-family: 'Roboto', sans-serif;
     background-color: #0f171e;
     position: absolute;
