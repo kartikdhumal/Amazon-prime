@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import './login.scss'
-import logo from '../images/amazonprimeblack.png'
+import logo from '../images/amazonprime.png'
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
 import Axios from 'axios';
+import { toast } from 'react-toastify'
 
 function Login() {
   const navigate = useNavigate()
@@ -27,20 +28,20 @@ function Login() {
 
     try {
       if (email === "" || password === "") {
-        alert("Please enter your Email and Password");
+        toast.warning("Please enter your Email and Password");
         setIsLoading(false);
         return;
       }
 
       const emailRegex = /^\S+@\S+\.\S+$/;
       if (!emailRegex.test(email)) {
-        alert("Please enter a valid email address");
+        toast.warning("Please enter a valid email address");
         setIsLoading(false);
         return;
       }
 
       if (password.length < 2) {
-        alert("Password must be at least 2 characters long");
+        toast.warning("Password must be at least 2 characters long");
         setIsLoading(false);
         return;
       }
@@ -59,22 +60,22 @@ function Login() {
       );
 
       if (response.data.usernot) {
-        alert('User not exists');
+        toast.error('User not exists');
         setEmail("");
         setPassword("");
       } else if (response.data.passwordnot) {
-        alert('Incorrect Password');
+        toast.warning('Incorrect Password');
         setPassword("");
       } else if (response.data && response.data.success) {
         if (response.data.isadmin === true) {
-          alert('Login successful');
+          toast.info('Login successful');
           sessionStorage.setItem('userid', response.data.userid);
           sessionStorage.setItem('email', response.data.email);
           setEmail("");
           setPassword("");
           navigate('/admin');
         } else {
-          alert('Login successful');
+          toast.info('Login successful');
           sessionStorage.setItem('myuserid', response.data.userid);
           sessionStorage.setItem('email', response.data.email);
           setEmail("");
@@ -82,7 +83,7 @@ function Login() {
           navigate('/homepage');
         }
       } else {
-        alert('Something went wrong');
+        toast.error('Something went wrong');
         setEmail("");
         setPassword("");
       }
@@ -97,7 +98,7 @@ function Login() {
 
   return (
     <div>
-      <div className="login">
+      <div className="loginbox">
         <div className="top">
           <div className="wrapper">
             <img className='logo' src={logo} alt='logo' />
@@ -113,7 +114,7 @@ function Login() {
               {isLoading ? <CircularProgress size={24} /> : "Continue"} </button>
             <span> By continuing, you agree to the Amazon <span>Conditions of Use and Privacy Notice</span> </span>
           </form>
-          <div className='newtoamazon'> ----------------------------------------------- New to Amazon? -----------------------------------------------</div>
+          <div className='newtoamazon'> ---------------------------------- New to Amazon? ----------------------------------</div>
           <NavLink className="createButton" to={'/register'}> <div>
             Create Your Amazon Account</div> </NavLink>
         </div>

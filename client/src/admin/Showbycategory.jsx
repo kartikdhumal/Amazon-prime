@@ -3,6 +3,7 @@ import Navbar from '../Navbar';
 import { useParams } from 'react-router-dom';
 import './showbycategory.scss';
 import List from '../list/List';
+import Loader from '../loader/Loader';
 
 function Showbycategory() {
     const { genre } = useParams();
@@ -35,7 +36,7 @@ function Showbycategory() {
                 <h2 className='cattitle'> {genre} </h2>
                 <div className='genress'>
                     {isLoading ? (
-                        <p>Loading...</p>
+                        <p><Loader/></p>
                     ) : showGenres.includes(genre) ? (
                         <>
                             <List title="Movie" type="categorymovies" genre={genre} />

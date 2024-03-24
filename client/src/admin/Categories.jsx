@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Navbar from '../Navbar';
 import './categories.scss';
+import Loader from '../loader/Loader';
 
 function Categories() {
   const [showGenres, setShowGenres] = useState([]);
@@ -18,11 +19,11 @@ function Categories() {
         const genres = data.map((show) => show.genre);
         const uniqueGenres = [...new Set(genres)];
         setShowGenres(uniqueGenres);
-        setLoading(false); // Set loading to false when data is fetched
+        setLoading(false);
       })
       .catch((error) => {
         console.error(error);
-        setLoading(false); // Set loading to false in case of error
+        setLoading(false); 
       });
   };
 
@@ -33,7 +34,7 @@ function Categories() {
         <h2 className='title'> Categories </h2>
         <div className='genres'>
           {loading ? (
-            <div className='loadingmessage'>Loading...</div>
+            <div className='loadingmessage'><Loader/></div>
           ) : showGenres.length === 0 ? (
             <div className='no-category-message'>No Category Found</div>
           ) : (

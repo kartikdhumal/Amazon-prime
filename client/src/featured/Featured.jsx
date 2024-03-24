@@ -4,6 +4,8 @@ import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
+import { toast } from 'react-toastify';
 
 function Featured({ type, onTypeChange }) {
   const [moviedata, getShowData] = useState([])
@@ -70,12 +72,12 @@ function Featured({ type, onTypeChange }) {
     try {
       const userId = sessionStorage.myuserid;
       if (!userId) {
-        alert('User ID is empty');
+        toast.warning('User ID is empty');
         return;
       }
       const showId = mydata._id;
       if (!showId) {
-        alert('Show ID is empty');
+        toast.warning('Show ID is empty');
         return;
       }
 
@@ -93,11 +95,11 @@ function Featured({ type, onTypeChange }) {
       if (response.ok) {
         setIsAddedToWatchlist(true);
       } else {
-        alert('Something is wrong');
+        toast.error('Something is wrong');
       }
     } catch (error) {
       console.error('Error adding to watchlist in client:', error);
-      alert('An error occurred while adding to watchlist');
+    toast.error('An error occurred while adding to watchlist');
     }
   };
 
@@ -120,8 +122,8 @@ function Featured({ type, onTypeChange }) {
   const truncateDescription = (description) => {
     if (description) {
       const words = description.split(' ');
-      if (words.length > 30) {
-        return words.slice(0, 30).join(' ') + '...';
+      if (words.length > 15) {
+        return words.slice(0,15).join(' ') + '...';
       } else {
         return description;
       }
@@ -145,10 +147,11 @@ function Featured({ type, onTypeChange }) {
             {truncateDescription(mydata.description)}
           </span>
           <div className="buttons">
-            <button className="play">
-              <PlayArrowIcon />
-              <NavLink className='playbutton' to={`/watch/${mydata._id}`}> <span> Play </span> </NavLink>
-            </button>
+            <NavLink to={`/watch/${mydata._id}`}>
+            <Button className='play' variant="outlined" startIcon={<PlayArrowIcon />}>
+              Play
+            </Button>
+            </NavLink>
             <div>
               {isAddedToWatchlist ? (
                 <CheckIcon className='myicon' onClick={handleDelete} />

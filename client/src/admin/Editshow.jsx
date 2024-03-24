@@ -10,6 +10,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate, useParams } from 'react-router-dom';
 import UnauthorizeAdmin from './UnauthorizeAdmin';
 import Avatar from '@mui/material/Avatar';
+import { toast } from 'react-toastify';
 
 function Editshow() {
   const { id } = useParams();
@@ -336,14 +337,14 @@ function Editshow() {
       console.log("Form Data:", formData);
       const MyData = await Axios.put(`https://amazon-prime-server.vercel.app/editshow/${id}`, formData);
       if (MyData) {
-        alert('Show updated');
+        toast.info('Show updated');
         fetchData();
         navigate('/shows');
       }
     } catch (err) {
       console.error(err);
       console.log(err);
-      alert("Something went wrong. Please try again later.");
+      toast.error("Something went wrong. Please try again later.");
       navigate('/shows');
     }
     finally {

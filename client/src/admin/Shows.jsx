@@ -13,6 +13,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import AdminNavbar from './AdminNavbar'
 import axios from 'axios';
 import { Cloudinary } from "@cloudinary/url-gen";
+import { toast } from 'react-toastify';
 
 function Shows() {
   const [moviedata, getShowData] = useState([])
@@ -301,7 +302,7 @@ function Shows() {
         }
       });
       if (MyData) {
-        alert('Show added');
+        toast.info('Show added');
         setTitle('');
         setDescription('');
         setGenre('');
@@ -316,7 +317,7 @@ function Shows() {
     } catch (err) {
       console.error(err);
       console.log(err);
-      alert("Something went wrong. Please try again later.");
+      toast.warning("Something went wrong. Please try again later.");
     } finally {
       setIsLoading(false);
       setTitle('');

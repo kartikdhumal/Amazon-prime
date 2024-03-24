@@ -15,6 +15,7 @@ import Settings from '@mui/icons-material/Settings';
 import Tooltip from '@mui/material/Tooltip';
 import avatar from '../images/usericon.png'
 import IconButton from '@mui/material/IconButton';
+import { toast } from 'react-toastify';
 
 function Navbar() {
   const id = sessionStorage.userid;
@@ -22,7 +23,7 @@ function Navbar() {
   const handleLogout = () =>
   { 
         sessionStorage.removeItem("userid");
-        alert("Logged out");
+        toast.info("Logged out");
         navigate('/login');
   }
    UnauthorizeAdmin()

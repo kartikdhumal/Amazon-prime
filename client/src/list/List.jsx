@@ -12,7 +12,6 @@ function List(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [mywatchlists, setmywatchlists] = useState([]);
   const listRef = useRef();
-
   const fetchData = () => {
     fetch('https://amazon-prime-server.vercel.app/findshow')
       .then((response) => response.json())
@@ -39,9 +38,11 @@ function List(props) {
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0 && data[0].hasOwnProperty('userId') && data[0].hasOwnProperty('showIds')) {
-          const usermywatchlists = data.filter(watchlist => watchlist.userId === userId);
+          const usermywatchlists = data.filter(watchlist => watchlist.userId == userId);
           if (usermywatchlists.length > 0) {
-            setmywatchlists(usermywatchlists);
+            const showIds = usermywatchlists[0].showIds;
+            const filteredShows = moviedata.filter(show => showIds.includes(show._id));
+            setmywatchlists(filteredShows);
           }
         }
       })
@@ -145,31 +146,27 @@ function List(props) {
         </div>
       ) : props.type === "mywatchlists" ? (
         <div>
-          {mywatchlists.length > 0 && mywatchlists[0].showIds.length > 0 && (
-            <span className="listTitle">
-              {props.title}
-            </span>
-          )}
           <div className="wrapper">
             <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
-            {mywatchlists.length > 0 && mywatchlists[0]?.showIds?.length > 0 ? (
-              mywatchlists[0].showIds.map((showId, index) => {
-                const show = moviedata.find(show => show._id == showId);
-                if (show) {
-                  return <ListItem key={index} data={show} />;
-                }
-                return <h1> No </h1>;
-              })
-            ) : (
-              <p> No Watchlist found </p>
-            )}
-
+            {
+              isLoading ? (
+                <Loader />
+              ) : (
+                <div className="container" ref={listRef}>
+                  {mywatchlists.length > 0 && (
+                    mywatchlists.map((show, index) => (
+                      <ListItem data={show} key={index} />
+                    ))
+                  )}
+                </div>
+              )
+            }
 
             <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
           </div>
         </div>
-      ) : props.type === "nodata" ? (
-        props.genre == "" ? (
+      ) : props.type == "data" ? (
+        props.data != "" ? (
           <>
             <div>
               <span className="listTitle">
@@ -178,9 +175,7 @@ function List(props) {
               <div className="wrapper">
                 <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
                 <div className="container" ref={listRef}>
-                  {moviedata.reverse().map((show, index) => (
-                    <ListItem key={index} data={show} />
-                  ))}
+                  <ListItem data={props.data} />
                 </div>
                 <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
               </div>

@@ -6,6 +6,7 @@ import Navbar from '../Navbar'
 import AdminNavbar from '../admin/AdminNavbar'
 import CircularProgress from '@mui/material/CircularProgress';
 import bcrypt from "bcryptjs";
+import { toast } from 'react-toastify';
 
 function Editprofile() {
   const navigate = useNavigate();
@@ -63,11 +64,11 @@ function Editprofile() {
   const onHandleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      alert('Both email and password are required.');
+      toast.error('Both email and password are required.');
     } else if (!validateEmail(email)) {
-      alert('Please enter a valid email address.');
+      toast.error('Please enter a valid email address.');
     } else if (password.length < 2) {
-      alert('Password must be at least 2 characters long.');
+      toast.error('Password must be at least 2 characters long.');
     } else {
       try {
         setLoading(true);
@@ -84,15 +85,15 @@ function Editprofile() {
 
         if (response.ok) {
           if (sessionStorage.userid) {
-            alert('Profile updated successfully!');
+            toast.info('Profile updated successfully!');
             navigate('/admin');
           }
           if (sessionStorage.myuserid) {
-            alert('Profile updated successfully!');
+            toast.info('Profile updated successfully!');
             navigate('/homepage');
           }
         } else {
-          alert('Profile update failed');
+          toast.error('Profile update failed');
         }
         setLoading(false);
       } catch (error) {

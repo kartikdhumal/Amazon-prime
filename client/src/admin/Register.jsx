@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react'
 import './register.scss'
-import logo from '../images/amazonprimeblack.png'
+import logo from '../images/amazonprime.png'
 import { NavLink, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
 import bcrypt from "bcryptjs";
+import { toast } from 'react-toastify';
 
 function Register() {
     const navigate = useNavigate()
@@ -40,16 +41,16 @@ function Register() {
         e.preventDefault();
         setIsLoading(true);
         if (email == "" && password == "") {
-            alert('Please enter the field');
+            toast.warning('Please enter the field');
             setIsLoading(false);
         }
         else if (!validateEmail(email)) {
-            alert('Please enter a valid email address.');
+            toast.warning('Please enter a valid email address.');
             setIsLoading(false);
             isClicked(false);
         }
         else if (password.length < 2) {
-            alert('Password must be at least 2 characters long.');
+        toast.warning('Password must be at least 2 characters long.');
             setIsLoading(false);
             setPassword('');
         }
@@ -65,14 +66,14 @@ function Register() {
                     }
                 });
                 if (mydata.data.userexists) {
-                    alert('User already exists');
+                    toast.error('User already exists');
                     setEmail("");
                     setPassword("");
                     setIsLoading(false);
                 }
                 if (mydata.data.userid) {
                     sessionStorage.setItem('myuserid', mydata.data.userid);
-                    alert('Registered Successfully');
+                    toast.info('Registered Successfully');
                     setIsLoading(false);
                     setEmail("");
                     setPassword("");
@@ -81,7 +82,7 @@ function Register() {
                 setIsLoading(false);
             } catch (err) {
                 console.error("Error : " + err);
-                alert('User already exists');
+                toast.error('User already exists');
                 setIsLoading(false);
                 setEmail("");
                 setPassword("");

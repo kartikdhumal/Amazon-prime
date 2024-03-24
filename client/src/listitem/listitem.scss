@@ -24,7 +24,7 @@
   text-decoration: none;
 }
 
-.listItem {
+.listcard {
   width: 225px;
   height: 120px;
   margin-right: 20px !important;
@@ -36,35 +36,53 @@
   @include mobile {
     width: 175px !important;
     height: auto !important;
-
-    &:hover {
-      width: 200px !important;
-      height: 300px;
-      position: absolute !important;
-      border-radius: 10px;
-      margin-top: -10px !important;
-    }
   }
 
-  video {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
+  .model {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left:100%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #0f171e;
+    padding: 20px;
 
-    @include mobile {
-      width: auto;
-      height: 100px !important;
+    @include minimobile {
+      width: 300px;
+      padding: 10px;
+    }
+
+    .listvideo {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      left: 0;
+
+      @include mobile {
+        width: auto;
+        height: 100px !important;
+      }
+    }
+
+    h2 {
+      color: #f2f2f2;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: lightgray;
+      font-size: 14px;
+      margin-bottom: 20px;
     }
   }
 
-  img {
+  .listposter {
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    cursor: pointer;
     object-fit: cover;
 
     @include mobile {
@@ -74,14 +92,6 @@
   }
 
   &:hover {
-    width: 325px;
-    height: 300px;
-    position: absolute !important;
-    border-radius: 10px;
-    margin-top: -150px !important;
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
-    box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
-
     img {
       height: 140px;
     }
@@ -109,6 +119,7 @@
       background-color: #000000;
       flex-direction: column;
       padding: 20px !important;
+      z-index: 1000 !important;
 
       .iconsbox {
         display: flex;
@@ -122,7 +133,7 @@
           justify-content: right;
         }
 
-        .playicon {
+        .playicn {
           border: 2px solid white;
           color: #f2f2f2;
           padding: 5px;

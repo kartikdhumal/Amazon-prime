@@ -14,12 +14,12 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import DirectionsIcon from '@mui/icons-material/Directions';
 import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { NavLink, useNavigate } from 'react-router-dom';
 import UnauthorizeUser from './admin/UnauthorizeUser';
+import { toast } from 'react-toastify';
 
 function Navbar() {
   const navigate = useNavigate()
@@ -71,7 +71,7 @@ function Navbar() {
 
   const handleLogout = () => {
     sessionStorage.removeItem('myuserid');
-    alert('Logged out');
+    toast.info('Logged out');
     navigate('/login');
   };
   UnauthorizeUser()
@@ -79,7 +79,7 @@ function Navbar() {
   const opensearchbox = () => {
     setboxopened(true);
   }
-  const closesearchbox  = () => {
+  const closesearchbox = () => {
     setboxopened(false);
   }
   const openNavbar = () => {
@@ -112,18 +112,18 @@ function Navbar() {
         <div className='left' id="elementToToggle">
           <MenuIcon className='closeicon' onClick={closeNavbar} />
           <img src={netflix} alt='logo'></img>
-          <span><NavLink className="link" to={`/homepage`}><span className="navbarmainLinks">Home</span></NavLink></span>
-          <span><NavLink className="link" to={`/myshows`}><span className="navbarmainLinks">Shows</span></NavLink></span>
-          <span><NavLink className="link" to={`/mymovies`}><span className="navbarmainLinks">Movies</span></NavLink></span>
-          <span><NavLink className="link" to={`/categories`}><span className="navbarmainLinks">Categories</span></NavLink></span>
-          <span><NavLink className="link" to={`/watchlists`}><span className="navbarmainLinks">Watchlist</span></NavLink></span>
+          <span><NavLink style={({ isActive }) => { return isActive ? { color: "#f2f2f2" } : {} }} className="link" to={`/homepage`}><span className="navbarmainLinks">Home</span></NavLink></span>
+          <span><NavLink style={({ isActive }) => { return isActive ? { color: "#f2f2f2" } : {} }} className="link" to={`/myshows`}><span className="navbarmainLinks">Shows</span></NavLink></span>
+          <span><NavLink style={({ isActive }) => { return isActive ? { color: "#f2f2f2" } : {} }} className="link" to={`/mymovies`}><span className="navbarmainLinks">Movies</span></NavLink></span>
+          <span><NavLink style={({ isActive }) => { return isActive ? { color: "#f2f2f2" } : {} }} className="link" to={`/categories`}><span className="navbarmainLinks">Categories</span></NavLink></span>
+          <span><NavLink style={({ isActive }) => { return isActive ? { color: "#f2f2f2" } : {} }} className="link" to={`/watchlists`}><span className="navbarmainLinks">Watchlist</span></NavLink></span>
         </div>
         <MenuIcon className='menuicon' onClick={openNavbar} id="toggleButton" />
         <img src={netflix} alt='logo' id='middlelogo' className='middlelogo'></img>
         <div className='right'>
           {
             boxopened ? <>
-              <CloseIcon className='icon' onClick={closesearchbox}/>
+              <CloseIcon className='icon' onClick={closesearchbox} />
             </> : <>
               <SearchIcon className='icon' onClick={opensearchbox} />
             </>
@@ -135,14 +135,15 @@ function Navbar() {
                 className="searchinput"
                 sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
               >
-                <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-                  <SearchIcon sx={{ fontSize: 28 }} />
+                <IconButton type="button" aria-label="search">
+                  <SearchIcon />
                 </IconButton>
                 <InputBase
-                  sx={{ ml: 1, flex: 1, fontSize: 22, color: '#f2f2f2' }}
+                  sx={{ ml: 1, flex: 1,color: '#f2f2f2' }}
                   placeholder="Search"
                   inputProps={{ 'aria-label': 'search google maps' }}
                   onChange={handleSearchChange}
+                  className='search'
                 />
               </Paper>
             </div>
@@ -152,7 +153,7 @@ function Navbar() {
               {searchResults.map((result) => (
                 <div key={result.id} className="search-result-item">
                   <img src={result.poster} className="poster" alt={result.title} />
-                  <NavLink className="resulttitle" to={`/watch/${result._id}`}>
+                  <NavLink className="showtitle" to={`/watch/${result._id}`}>
                     <span>{result.title}</span>
                   </NavLink>
                   <span className='resultyear'>{result.seasons[result.seasons.length - 1].year}</span>

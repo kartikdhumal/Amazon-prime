@@ -31,7 +31,7 @@ function MyShows() {
   return (
     <div className='home'>
       <Navbar />
-      <Featured type="series" />
+      <Featured type="movie" />
       {
         uniqueGenres.length > 0 && (
           uniqueGenres.map((data, index) => (
