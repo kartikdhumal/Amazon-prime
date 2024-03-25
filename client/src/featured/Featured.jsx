@@ -147,11 +147,9 @@ function Featured({ type, onTypeChange }) {
             {truncateDescription(mydata.description)}
           </span>
           <div className="buttons">
-            <NavLink to={`/watch/${mydata._id}`}>
-            <Button className='play' variant="outlined" startIcon={<PlayArrowIcon />}>
+            <Button className='play' variant="outlined" onClick={() => navigate(`/watch/${mydata._id}`)} startIcon={<PlayArrowIcon />}>
               Play
             </Button>
-            </NavLink>
             <div>
               {isAddedToWatchlist ? (
                 <CheckIcon className='myicon' onClick={handleDelete} />

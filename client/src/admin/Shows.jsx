@@ -414,7 +414,6 @@ function Shows() {
           image: data.secure_url
         };
         setCastMembers(updatedCastMembers);
-        console.log(data.secure_url);
       } else {
         console.error('No secure URL found in the response:', data);
       }
