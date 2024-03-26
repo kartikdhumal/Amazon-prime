@@ -140,7 +140,10 @@ function Navbar() {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
             <MenuItem onClick={handleClose}>
-              <Avatar src={avatar} sx={{ width: 32, height: 32 }}></Avatar>Kartik Dhumal
+              <Avatar src={avatar} sx={{ width: 32, height: 32 }}></Avatar>
+              {
+                sessionStorage.email ? sessionStorage.email : "Admin"
+              }
             </MenuItem>
             <Divider />
             <MenuItem onClick={handleClose}>
