@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './addnavbar.scss'
+import '../styles/addnavbar.scss'
 import netflix from '../images/amazonprime.png'
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink , useNavigate} from 'react-router-dom';

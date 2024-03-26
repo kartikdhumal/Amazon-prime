@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './watch.scss';
+import '../styles/watch.scss';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useNavigate, useParams } from 'react-router-dom';
 import Axios from 'axios';
-import netflix from '../fullvideos/netflix.mp4';
 import UnauthorizeUser from '../admin/UnauthorizeUser';
 import ShakaPlayer from 'shaka-player-react';
 import 'shaka-player/dist/controls.css';

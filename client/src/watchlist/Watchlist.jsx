@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import '../admin/home.scss';
-import Navbar from '../Navbar';
-import ListItem from '../listitem/ListItem';
-import './watchlist.scss';
-import List from '../list/List';
+import '../styles/myhome.scss';
+import Navbar from '../navbar/Navbar';
+import '../styles/watchlist.scss';
 import Loader from '../loader/Loader';
 import { NavLink } from 'react-router-dom';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
@@ -67,8 +65,6 @@ function Watchlist() {
                         const filteredShows = moviedata.filter(show => showIds.includes(show._id));
                         setmywatchlists(filteredShows);
                         setIsLoading(false);
-                        console.log(userMyWatchlists.showIds);
-                        console.log(filteredShows);
                     }
                 }
             })

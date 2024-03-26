@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import './register.scss'
+import '../styles/register.scss'
 import logo from '../images/amazonprime.png'
 import { NavLink, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
@@ -73,6 +73,7 @@ function Register() {
                 }
                 if (mydata.data.userid) {
                     sessionStorage.setItem('myuserid', mydata.data.userid);
+                    sessionStorage.setItem('email', mydata.data.userData.email);
                     toast.info('Registered Successfully');
                     setIsLoading(false);
                     setEmail("");

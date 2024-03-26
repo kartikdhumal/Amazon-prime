@@ -28,10 +28,10 @@
 
 .users{
     background-color:#0f171e !important;
-    overflow: hidden;
     color:white;
+    overflow: hidden;
     width: auto;
-    height: 100vh !important;
+    height:auto !important;
     @include mobile{
       height:100vh;
     }
@@ -121,6 +121,7 @@
     }
     .deleteicons{
         color: red;
+        cursor: pointer;
     }
     .search{
       width: auto;

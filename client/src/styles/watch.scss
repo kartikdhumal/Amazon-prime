@@ -33,8 +33,9 @@
   width: auto;
   display: flex;
   flex-direction: column;
+  z-index: 0;
   padding-left: 15%;
-  padding-top: 2%;
+  padding-top:25%;
   padding-bottom: 1%;
   justify-content: start;
 
@@ -42,6 +43,7 @@
     width: auto;
     padding-left: 0%;
     padding: 25px;
+    padding-top:60%;
   }
 
   .stitle {
@@ -255,6 +257,9 @@
 
 .watch {
   width: 100vw;
+  position: fixed;
+  background-color: black;
+  z-index: 200;
   height: 50%;
 
   @include mobile {

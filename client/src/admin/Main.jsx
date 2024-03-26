@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './main.scss'
+import '../styles/main.scss'
 import AdminNavbar from './AdminNavbar'
 import { useNavigate } from 'react-router-dom';
 

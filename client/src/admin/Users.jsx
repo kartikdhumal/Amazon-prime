@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import './users.scss'
+import '../styles/users.scss'
 import { NavLink, useNavigate } from 'react-router-dom'
 import DeleteIcon from '@mui/icons-material/Delete';
 import Axios from 'axios';
@@ -10,6 +10,7 @@ import {
   tablePaginationClasses as classes,
 } from '@mui/base/TablePagination';
 import bcrypt from 'bcryptjs'
+import { CircularProgress } from '@mui/material';
 
 function Users() {
   const [userdata, getUserData] = useState([])
@@ -17,6 +18,7 @@ function Users() {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredData, setFilteredData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userdata.length) : 0;
 
   const [formData, setFormData] = useState({
@@ -30,12 +32,12 @@ function Users() {
 
   const fetchData = () => {
     fetch('https://amazon-prime-server.vercel.app/finduser')
-    .then((response) => response.json())
-    .then((data) => {
-      getUserData(data);
-      setFilteredData(data);
-    })
-    .catch((error) => console.error(error));
+      .then((response) => response.json())
+      .then((data) => {
+        getUserData(data);
+        setFilteredData(data);
+      })
+      .catch((error) => console.error(error));
   }
   useEffect(() => {
     fetchData()
@@ -128,7 +130,13 @@ function Users() {
   const form = useRef();
   const handleUserSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
+      const existingUser = userdata.find(user => user.email === formData.email);
+      if (existingUser) {
+        alert('User already exists with this email');
+        return;
+      }
       const sendData = await Axios.post('https://amazon-prime-server.vercel.app/users', {
         username: formData.username,
         email: formData.email,
@@ -172,7 +180,9 @@ function Users() {
             <option> Admin </option>
             <option> User </option>
           </select>
-          <button> Add user </button>
+          <button>
+            {loading ? <CircularProgress /> : 'Add User'}
+          </button>
         </form>
       </div>
       <div className="search">
@@ -206,11 +216,11 @@ function Users() {
                   year: 'numeric'
                 })} - {' '}
                 {
-                new Date(row.createdAt).toLocaleTimeString('en-US', {
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  timeZone: 'UTC'
-              })              
+                  new Date(row.createdAt).toLocaleTimeString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    timeZone: 'UTC'
+                  })
                 }
               </td>
 

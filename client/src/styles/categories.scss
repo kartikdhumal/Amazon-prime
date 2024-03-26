@@ -25,11 +25,15 @@
   }
 }
 
-.categories-container {
-  max-width: 90%;
+.maincontainer {
+  width: 80%;
   margin: 0 auto;
   padding: 20px;
   padding-top: 90px;
+
+  @include tablet {
+    width: auto;
+  }
 }
 
 .loadingmessage {
@@ -40,7 +44,7 @@
 .title {
   font-size: 40px;
   font-weight: bold;
-  padding-left:1%;
+  padding-left: 1%;
   margin-bottom: 20px;
 
   @include tablet {
@@ -51,13 +55,14 @@
 
 .genres {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 
-  @include mobile {
-    justify-content: start;
+  @include tablet {
+    justify-content: space-evenly;
   }
 }
 
@@ -65,34 +70,39 @@
 .boxes {
   padding: 40px;
   width: 200px;
-  margin-top: 60px;
-  background-color: #00a8e1;
-  color: #0f171e;
+  color: #f2f2f2;
+  margin-right: 10px;
+  object-fit: fill;
+  margin-top: 30px;
+  background: url('../images/genre.jpg');
   border-radius: 15px;
   font-size: 33px;
-  border: 1px solid #0f171e;
+  border: 1px solid gray;
   display: flex;
-  justify-content: start;
+  justify-content: center;
+  text-transform: capitalize;
   align-items: center;
   font-weight: bold !important;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: background-color 0.3s ease;
 
   @include tablet {
     width: 150px;
     padding: 20px;
-    margin-top: 2px;
+    margin-right: 0px;
+    margin-top: 10px;
     font-size: 25px;
   }
-  @include minimobile{
+
+  @include minimobile {
     width: 125px;
-    padding:15px;
-    font-size:20px;
+    padding: 15px;
+    font-size: 20px;
   }
 }
 
 .boxes:hover {
-  background-color: #0f171e;
-  border: 1px solid #00a8e1;
-  color: #00a8e1;
+  background: url('../images/genrebg.jpg');
+  border: 1px solid gray;
+  color: #f2f2f2;
 }

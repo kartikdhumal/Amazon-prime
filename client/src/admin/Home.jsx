@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../Navbar'
+import Navbar from '../navbar/Navbar'
 import Featured from '../featured/Featured'
 import List from '../list/List'
-import './home.scss'
+import '../styles/myhome.scss'
 
 function Home() {
   const [moviedata, getShowData] = useState([])
@@ -23,7 +23,7 @@ function Home() {
   }
 
   return (
-    <div className='home'>  
+    <div className='myhome'>  
       <Navbar />
       <Featured type="" />
       {

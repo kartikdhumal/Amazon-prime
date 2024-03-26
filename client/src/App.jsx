@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminResult from './admin/AdminResult'
+import AdminResult from './admin/AdminResult';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

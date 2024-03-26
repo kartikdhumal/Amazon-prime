@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import '../src/styles/navbar.scss';
-import netflix from './images/amazonprime.png'
-import avatar from './images/usericon.png'
+import '../styles/navbar.scss'
+import netflix from '../images/amazonprime.png'
+import avatar from '../images/usericon.png'
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -18,7 +18,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { NavLink, useNavigate } from 'react-router-dom';
-import UnauthorizeUser from './admin/UnauthorizeUser';
+import UnauthorizeUser from '../admin/UnauthorizeUser';
 import { toast } from 'react-toastify';
 
 function Navbar() {

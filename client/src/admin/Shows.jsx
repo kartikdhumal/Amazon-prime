@@ -8,7 +8,7 @@ import {
   tablePaginationClasses as classes,
 } from '@mui/base/TablePagination';
 import EditNoteIcon from '@mui/icons-material/EditNote';
-import './shows.scss'
+import '../styles/shows.scss'
 import CircularProgress from '@mui/material/CircularProgress';
 import AdminNavbar from './AdminNavbar'
 import axios from 'axios';

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import Navbar from '../Navbar';
-import './categories.scss';
+import Navbar from '../navbar/Navbar';
+import '../styles/categories.scss';
 import Loader from '../loader/Loader';
 
 function Categories() {
@@ -30,7 +30,7 @@ function Categories() {
   return (
     <div className='home'>
       <Navbar />
-      <div className='categories-container'>
+      <div className='maincontainer'>
         <h2 className='title'> Categories </h2>
         <div className='genres'>
           {loading ? (

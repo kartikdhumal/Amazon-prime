@@ -1,9 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import './editshow.scss'
-import { NavLink } from 'react-router-dom'
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditNoteIcon from '@mui/icons-material/EditNote';
-import AuthRedirect from './AuthRedirect'
+import '../styles/editshow.scss'
 import Axios from 'axios';
 import AdminNavbar from './AdminNavbar'
 import CircularProgress from '@mui/material/CircularProgress';

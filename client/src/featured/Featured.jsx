@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './featured.scss'
+import '../styles/featured.scss'
 import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../Navbar';
+import Navbar from '../navbar/Navbar';
 import { useParams } from 'react-router-dom';
-import './showbycategory.scss';
+import '../styles/showbycategory.scss';
 import List from '../list/List';
 import Loader from '../loader/Loader';
 

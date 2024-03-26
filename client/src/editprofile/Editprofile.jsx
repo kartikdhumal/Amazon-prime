@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import './editprofile.scss'
+import '../styles/editprofile.scss'
 import { useNavigate, useParams } from 'react-router-dom';
 import avatar from '../images/avatar.png'
-import Navbar from '../Navbar'
+import Navbar from '../navbar/Navbar'
 import AdminNavbar from '../admin/AdminNavbar'
 import CircularProgress from '@mui/material/CircularProgress';
 import bcrypt from "bcryptjs";
@@ -28,7 +28,6 @@ function Editprofile() {
         const data = await response.json();
         setEmail(data.email);
         setRole(data.role);
-        console.log(data);
       } else {
         console.error('Failed to fetch data');
       }

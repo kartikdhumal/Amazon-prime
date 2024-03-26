@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import './list.scss'
+import '../styles/list.scss'
 import ListItem from '../listitem/ListItem'
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';

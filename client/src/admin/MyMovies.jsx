@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../Navbar'
+import Navbar from '../navbar/Navbar'
 import Featured from '../featured/Featured'
 import List from '../list/List'
-import './home.scss'
+import '../styles/home.scss'
 import { useNavigate } from 'react-router-dom'
 
 function MyShows() {

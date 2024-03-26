@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './login.scss'
+import '../styles/login.scss'
 import logo from '../images/amazonprime.png'
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
@@ -113,6 +113,7 @@ function Login() {
             <button className="loginButton">
               {isLoading ? <CircularProgress size={24} /> : "Continue"} </button>
             <span> By continuing, you agree to the Amazon <span>Conditions of Use and Privacy Notice</span> </span>
+            <NavLink to={'/sendemail'}><span className='forgotpassword'> Forgot your password ? </span></NavLink>
           </form>
           <div className='newtoamazon'> ---------------------------------- New to Amazon? ----------------------------------</div>
           <NavLink className="createButton" to={'/register'}> <div>
