@@ -31,6 +31,7 @@ function Categories() {
     <div className='home'>
       <Navbar />
       <div className='maincontainer'>
+      <div className="maininside">
         <h2 className='title'> Categories </h2>
         <div className='genres'>
           {loading ? (
@@ -45,6 +46,7 @@ function Categories() {
             ))
           )}
         </div>
+      </div>
       </div>
     </div>
   );

@@ -46,7 +46,8 @@
 }
 
 .navbar{
-    width: 100%;
+    width:100% !important;
+    right:0;
     color:white;
     font-size:17px;
     position: fixed;
@@ -127,7 +128,6 @@
         }
         @include minimobile {
           display: block;
-          padding-left:0%;
       }
       }
         .left{
@@ -151,7 +151,7 @@
             align-items: center !important;
             width:11% !important;
             @include tablet{
-              width: 50% !important;
+              width:30% !important;
             }
 
             .icon{
