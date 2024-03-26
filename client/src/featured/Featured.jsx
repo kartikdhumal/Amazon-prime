@@ -122,8 +122,8 @@ function Featured({ type, onTypeChange }) {
   const truncateDescription = (description) => {
     if (description) {
       const words = description.split(' ');
-      if (words.length > 15) {
-        return words.slice(0,15).join(' ') + '...';
+      if (words.length > 20) {
+        return words.slice(0,20).join(' ') + '...';
       } else {
         return description;
       }
