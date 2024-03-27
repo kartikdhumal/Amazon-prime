@@ -82,7 +82,7 @@ function Watch() {
           <ArrowBackOutlinedIcon onClick={handleArrow} className='icon' />
         </div>
         {isFetched && isFetched && (
-          <ShakaPlayer autoPlay src={showData} className="video" />
+          <ShakaPlayer autoPlay src={showData} className="videoplayer" />
         )}
       </div>
 

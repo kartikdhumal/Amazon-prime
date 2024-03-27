@@ -71,6 +71,7 @@ function Navbar() {
 
   const handleLogout = () => {
     sessionStorage.removeItem('myuserid');
+    sessionStorage.removeItem('email');
     toast.info('Logged out');
     navigate('/login');
   };
@@ -87,7 +88,7 @@ function Navbar() {
     const toggleButton = document.getElementById('toggleButton');
     const middlelogo = document.getElementById('middlelogo');
     if (elementToToggle.style.display === 'none' || elementToToggle.style.display === '') {
-      elementToToggle.style.display = 'block';
+      elementToToggle.style.display = 'block';  
       toggleButton.style.display = 'none';
       middlelogo.style.display = 'none';
     } else {
@@ -119,7 +120,7 @@ function Navbar() {
           <span><NavLink style={({ isActive }) => { return isActive ? { color: "#f2f2f2" } : {} }} className="link" to={`/watchlists`}><span className="navbarmainLinks">Watchlist</span></NavLink></span>
         </div>
         <MenuIcon className='menuicon' onClick={openNavbar} id="toggleButton" />
-        <img src={netflix} alt='logo' id='middlelogo' className='middlelogo'></img>
+        <img src={netflix} alt='logo' id='middlelogos' className='middlelogos'></img>
         <div className='right'>
           {
             boxopened ? <>
@@ -129,7 +130,7 @@ function Navbar() {
             </>
           }
           {boxopened && (
-            <div className="searchdivbox">
+            <div className="searchbox">
               <Paper
                 component="form"
                 className="searchinput"

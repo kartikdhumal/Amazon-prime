@@ -61,12 +61,13 @@
       }
     }
 
-    .middlelogo {
+    .middlelogos {
       height: 70px;
       margin-right: 40px;
+      display: none !important;
 
       @include mobile {
-        display: block;
+        display: block !important;
         margin-right: 0px;
       }
     }
@@ -91,8 +92,10 @@
         display: none;
         flex-direction: column;
         justify-content: center;
+       position: absolute;
         align-items: center;
         left: 0;
+        top: 10%;
         margin-top: auto;
         height: auto;
         background-color: #0f171e;
@@ -195,7 +198,7 @@
         margin-right: 10px;
       }
 
-      .searchdivbox {
+      .searchbox {
         background-color:#0f171e;
         padding: 20px;
         position: absolute;
