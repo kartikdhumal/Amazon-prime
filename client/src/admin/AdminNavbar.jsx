@@ -84,7 +84,7 @@ function Navbar() {
             </ul>
          </div>
          <MenuIcon className='menuicon' onClick={openNavbar} id="toggleButton"/>
-        <img src={netflix} alt='logo' id='middlelogo' className='middlelogo'></img>
+        <img src={netflix} alt='logo' id='middlelogos' className='middlelogos'></img>
         <div className='rightside'>
                     <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
             <Tooltip title="Profile">
