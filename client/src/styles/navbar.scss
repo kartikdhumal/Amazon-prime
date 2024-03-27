@@ -69,6 +69,7 @@
       @include mobile {
         display: block !important;
         margin-right: 0px;
+        margin-left: auto;
       }
     }
 
@@ -81,6 +82,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        position: absolute;
         left: 0;
         margin-top: auto;
         height: auto;
@@ -166,20 +168,20 @@
       align-items: center;
       justify-content: space-evenly !important;
       width: 10% !important;
-      margin-right: 50px;
+      margin-right: 50px; 
 
       @include mobile {
         width: auto !important;
         display: flex !important;
-        justify-content: flex-start !important;
+        justify-content:center !important;
         align-items: center !important;
-        margin-right: 15px;
+        margin-right:0px;
       }
 
       @include tablet {
         display: flex;
         justify-content: space-between;
-        width: 35% !important;
+        width:35% !important;
       }
 
       @include minimobile {
@@ -187,7 +189,6 @@
         display: flex !important;
         justify-content: flex-start !important;
         align-items: center !important;
-        margin-left: -15% !important;
       }
 
       .search-box {
