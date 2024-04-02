@@ -176,10 +176,6 @@ function Shows() {
     const value = e.target.value;
     setDescription(value);
   };
-  const handleDuration = (e) => {
-    const value = e.target.value;
-    setDuration(value);
-  };
   const handleGenre = (e) => {
     const value = e.target.value;
     setGenre(value);
@@ -372,10 +368,20 @@ function Shows() {
           updatedSeasons[seasonIndex].videos = [];
         }
         updatedSeasons[seasonIndex].episodes[episodeIndex].video = data.secure_url;
-        console.log(updatedSeasons[seasonIndex].episodes[episodeIndex]);
         setSeasons(updatedSeasons);
         console.log(data.secure_url);
         setUploadedVideoUrl(data.secure_url);
+        const video = document.createElement('video');
+        video.preload = 'metadata';
+        video.onloadedmetadata = function () {
+          window.URL.revokeObjectURL(video.src);
+          const durationInSeconds = Math.round(video.duration);
+          const updatedSeasons = [...seasons];
+          updatedSeasons[seasonIndex].episodes[episodeIndex].duration = durationInSeconds;
+          setSeasons(updatedSeasons);
+          setUploadingVideo(false);
+        };
+        video.src = URL.createObjectURL(file);
       } else {
         console.error('No secure URL found in the response:', data);
       }
@@ -505,7 +511,7 @@ function Shows() {
           <input name='genre' onChange={handleGenre} value={genre} type='text' required placeholder='Genre'></input>
           <input name='limit' onChange={handleLimit} value={limit} type='number' min="1" required placeholder='Limit'></input>
           <select name='isSeries' value={isSeries} onChange={handleSelect} required>
-            <option disabled>Show Type</option>
+            <option>Show Type</option>
             <option value="false"> Movie </option>
             <option value="true"> Series </option>
           </select>
@@ -564,13 +570,6 @@ function Shows() {
                         value={episode.description}
                         onChange={(e) => handleEpisodeDescriptionChange(seasonIndex, episodeIndex, e)}
                         placeholder="Description"
-                      />
-
-                      <input
-                        type="number"
-                        value={episode.duration}
-                        onChange={(e) => handleEpisodeDurationChange(seasonIndex, episodeIndex, e)}
-                        placeholder="Duration"
                       />
 
                       <div className="episodediv">

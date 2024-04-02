@@ -42,7 +42,7 @@ function Editshow() {
   }
   UnauthorizeAdmin()
 
-  const handleTrailer = async (seasonIndex , e) => {
+  const handleTrailer = async (seasonIndex, e) => {
     const file = e.target.files[0];
     if (!file) return;
     setUploadingTrailer(true);
@@ -187,9 +187,19 @@ function Editshow() {
           updatedSeasons[seasonIndex].videos = [];
         }
         updatedSeasons[seasonIndex].episodes[episodeIndex].video = data.secure_url;
-        console.log(updatedSeasons[seasonIndex].episodes[episodeIndex]);
         setSeasons(updatedSeasons);
         console.log(data.secure_url);
+        const video = document.createElement('video');
+        video.preload = 'metadata';
+        video.onloadedmetadata = function () {
+          window.URL.revokeObjectURL(video.src);
+          const durationInSeconds = Math.round(video.duration);
+          const updatedSeasons = [...seasons];
+          updatedSeasons[seasonIndex].episodes[episodeIndex].duration = durationInSeconds;
+          setSeasons(updatedSeasons);
+          setUploadingVideo(false);
+        };
+        video.src = URL.createObjectURL(file);
       } else {
         console.error('No secure URL found in the response:', data);
       }
@@ -397,7 +407,7 @@ function Editshow() {
                       accept="video/*"
                       id={`episodes`}
                       className='trailers'
-                      onChange={(e) => handleTrailer(seasonIndex,e)}
+                      onChange={(e) => handleTrailer(seasonIndex, e)}
                     />
                     <video className='videoshow' controls src={season.trailer}></video>
                   </div>
@@ -432,13 +442,6 @@ function Editshow() {
                         value={episode.description}
                         onChange={(e) => handleEpisodeDescriptionChange(seasonIndex, episodeIndex, e)}
                         placeholder="Description"
-                      />
-
-                      <input
-                        type="number"
-                        value={episode.duration}
-                        onChange={(e) => handleEpisodeDurationChange(seasonIndex, episodeIndex, e)}
-                        placeholder="Duration"
                       />
 
                       <div className="episodediv">
