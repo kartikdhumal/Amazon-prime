@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route,Routes} from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Pagenotfound from './Pagenotfound'
 import Main from './Main'
 import '../styles/adminresult.scss'
@@ -25,27 +25,27 @@ import Showbycategory from './Showbycategory'
 function AdminResult() {
   return (
     <div className='result'>
-       <Routes>
-        <Route path="/" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/watch/:id" element={<Watch/>} />
-        <Route path="/myshows" element={<MyShows/>} />
-        <Route path="/categories" element={<Categories/>} />
-        <Route path="/mymovies" element={<MyMovies/>} />
+        <Route path="/watch/:id" element={<Watch />} />
+        <Route path="/myshows" element={<MyShows />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/mymovies" element={<MyMovies />} />
         <Route path="/admin" element={<Main />} />
-        <Route path="/users" element={<Users/>} />
+        <Route path="/users" element={<Users />} />
         <Route path="/homepage" element={<Home />} />
         <Route path="/editprofile/:id" element={<Editprofile />} />
-        <Route path="/watchlists" element={<Watchlist/>}/>
-        <Route path="/shows" element={ <Shows />} />
-        <Route path="/sendemail" element={ <SendEmail />} />
-        <Route path="/otp" element={ <OTP/>} />
-        <Route path="/changepassword" element={ <ChangePassword/>} />
-        <Route path="/editshow/:id" element={ <Editshow />} />
-        <Route path="/showbycategory/:genre" element={ <Showbycategory />} />
-        <Route path="/deleteshow/:id" element={ <Deleteshow />} />
-        <Route path="/deleteuser/:id" element={ <Deleteuser />} />
+        <Route path="/watchlists" element={<Watchlist />} />
+        <Route path="/shows" element={<Shows />} />
+        <Route path="/sendemail" element={<SendEmail />} />
+        <Route path="/otp" element={<OTP />} />
+        <Route path="/changepassword" element={<ChangePassword />} />
+        <Route path="/editshow/:id" element={<Editshow />} />
+        <Route path="/showbycategory/:genre" element={<Showbycategory />} />
+        <Route path="/deleteshow/:id" element={<Deleteshow />} />
+        <Route path="/deleteuser/:id" element={<Deleteuser />} />
         <Route path="*" element={<Pagenotfound />} />
       </Routes>
     </div>

@@ -88,7 +88,7 @@ function Navbar() {
     const toggleButton = document.getElementById('toggleButton');
     const middlelogo = document.getElementById('middlelogo');
     if (elementToToggle.style.display === 'none' || elementToToggle.style.display === '') {
-      elementToToggle.style.display = 'block';  
+      elementToToggle.style.display = 'block';
       toggleButton.style.display = 'none';
       middlelogo.style.display = 'none';
     } else {
@@ -140,7 +140,7 @@ function Navbar() {
                   <SearchIcon />
                 </IconButton>
                 <InputBase
-                  sx={{ ml: 1, flex: 1,color: '#f2f2f2' }}
+                  sx={{ ml: 1, flex: 1, color: '#f2f2f2' }}
                   placeholder="Search"
                   inputProps={{ 'aria-label': 'search google maps' }}
                   onChange={handleSearchChange}
