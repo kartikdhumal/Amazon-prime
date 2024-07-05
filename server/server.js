@@ -8,6 +8,7 @@ const User = require('./models/userModel');
 const bodyParser = require('body-parser');
 const Show = require('./models/showModel');
 const Watchlist = require('./models/Watchlist')
+require('dotenv').config();
 
 const app = express();
 const corsConfig = {
@@ -22,12 +23,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const PORT = 9000;
 
-
-const mongoURI = 'mongodb+srv://kartikdhumal:guddupandit2023@cluster0.dtpx5rn.mongodb.net/netflixapp?retryWrites=true&w=majority';
-
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('Connection successful');
+    console.log(`Connection successful`);
   })
   .catch((error) => {
     console.log(`The error is ${error}`);
