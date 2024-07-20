@@ -210,18 +210,21 @@ function Users() {
             <tr key={row.name}>
               <td>{index + page * rowsPerPage + 1}</td>
               <td>
-                {new Date(row.createdAt).toLocaleDateString('en-IN', {
-                  day: '2-digit',
-                  month: '2-digit',
-                  year: 'numeric'
-                })} - {' '}
                 {
-                  new Date(row.createdAt).toLocaleTimeString('en-US', {
+                  new Date(row.createdAt).toLocaleDateString('en-IN', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                  })
+                } - {' '}
+                {
+                  new Date(row.createdAt).toLocaleTimeString('en-IN', {
                     hour: '2-digit',
                     minute: '2-digit',
-                    timeZone: 'UTC'
+                    timeZone: 'Asia/Kolkata'
                   })
                 }
+
               </td>
 
               <td style={{ width: 160 }} align="right">
