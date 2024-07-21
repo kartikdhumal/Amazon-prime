@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const showSchema = new mongoose.Schema({
     poster: {
@@ -52,18 +52,18 @@ const showSchema = new mongoose.Schema({
     castMembers: [{
         image: {
             type: String,
-            required:false,
+            required: false,
         },
         reelName: {
             type: String,
-            required:false,
+            required: false,
         },
         realName: {
             type: String,
-            required:false,
+            required: false,
         },
     }],
 }, { timestamps: true });
 
 const Show = mongoose.model("Show", showSchema);
-module.exports = Show;
+export default Show;
