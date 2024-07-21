@@ -20,36 +20,37 @@
   }
 }
 
-.mynavbarbox{
+.mynavbarbox {
   display: flex;
   justify-content: center;
   align-items: center;
-  width:70% !important;
-  border:2px solid #00a8e1 !important;
+  width: 70% !important;
 }
 
 .navbar {
   font-size: 18px;
   position: fixed;
-  width:100% !important;
-  top:5px;
+  width: 100% !important;
+  top: 5px;
   align-self: center !important;
   display: flex;
   flex-direction: row;
   background-color: transparent !important;
   justify-content: center;
   z-index: 999;
+
   @include tablet {
-    top:0px;
+    top: 0px;
   }
-  @include mobile{
-    top:0px;
+
+  @include mobile {
+    top: 0px;
   }
 
   .container {
-    background-color:#00050D !important;
+    background-color: #00050D !important;
     padding: 0px 0px;
-    width:70% !important;
+    width: 70% !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,7 +59,7 @@
 
     @include mobile {
       display: flex;
-      width:100% !important;
+      width: 100% !important;
       justify-content: left;
     }
 
