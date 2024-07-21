@@ -27,7 +27,7 @@ function Watchlist() {
     const handleDelete = async (showId) => {
         try {
             const userId = sessionStorage.myuserid;
-            const response = await axios.delete(`http://localhost:6001/deletewatchlist/${userId}/${showId}`);
+            const response = await axios.delete(`https://amazonprime-newserver.vercel.app/deletewatchlist/${userId}/${showId}`);
             if (response.status >= 200 && response.status < 300) {
                 console.log('Delete successful');
                 fetchData();
