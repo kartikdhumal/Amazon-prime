@@ -19,7 +19,7 @@ app.options("", cors(corsConfig))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const PORT = 9000;
+const PORT = process.env.PORT || 6001;
 
 connectDB();
 
