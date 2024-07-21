@@ -11,7 +11,7 @@
 }
 
 .editprofile{
-    background-color:#0f171e !important;
+    background-color:#00050D !important;
     height:100%;
     overflow: hidden !important;
     color:white;
@@ -28,7 +28,7 @@
         font-size:30px;
         text-align:center;
         color: #00a8e1;
-        text-transform: uppercase;
+        text-transform: capitalize;
         width:80%; 
         font-weight: bold;
         letter-spacing: 1px;
@@ -72,7 +72,7 @@
           }
          button{
               height: 40px;
-              width:80%;
+              width:83%;
               border-radius: 5px;
               background-color: #00a8e1;
               color: white;

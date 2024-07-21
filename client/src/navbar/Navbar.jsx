@@ -108,7 +108,8 @@ function Navbar() {
     }
   }
   return (
-    <div className={"navbar"}>
+    <div className="mynavbarbox">
+    <div className="navbar">
       <div className='container'>
         <div className='left' id="elementToToggle">
           <MenuIcon className='closeicon' onClick={closeNavbar} />
@@ -238,6 +239,7 @@ function Navbar() {
           </Menu>
         </div>
       </div>
+    </div>
     </div>
   )
 }

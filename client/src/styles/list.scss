@@ -28,6 +28,7 @@
   .listTitle {
     color: #f2f2f2;
     font-size: 24px;
+    color: whitesmoke;
     font-weight: bold;
     text-transform: capitalize;
     margin-left: 50px;
@@ -35,10 +36,12 @@
 
   .wrapper {
     position: relative;
-   p{
+
+    p {
       width: 100%;
       text-align: center;
-   }
+    }
+
     .sliderArrow {
       width: 50px;
       height: 100%;

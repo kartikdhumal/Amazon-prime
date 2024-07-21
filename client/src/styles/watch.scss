@@ -21,7 +21,7 @@
 
 .main {
   width: 100%;
-  background-color: #0f171e;
+  background-color:#00050D;
   height: 100%;
 
   @include mobile {
@@ -110,7 +110,7 @@
     font-weight: bold;
     margin: 0 8px;
     cursor: pointer;
-    color: #0f171e;
+    color:#00050D;
     border: 1px solid gray;
     color: gray;
     font-size: 18px;
@@ -129,7 +129,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: #0f171e;
+  background-color:#00050D;
 
   @include mobile {
     padding: 0px;
@@ -141,7 +141,7 @@
   display: flex;
   width: auto;
   flex-direction: column;
-  background-color: #0f171e;
+  background-color:#00050D;
   align-items: center;
   justify-content: center;
   padding: 2%;

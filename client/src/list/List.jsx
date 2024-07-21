@@ -64,6 +64,8 @@ function List(props) {
       listRef.current.style.transform = `translateX(${-230 + distance}px)`;
     }
   };
+
+
   return (
     <div className="list">
       {props.type === "categoryall" ? (
@@ -75,20 +77,13 @@ function List(props) {
           )}
           <div className="wrapper">
             <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
-            {
-              isLoading ? (
-                <Loader />
-              ) : (
-                <div className="container" ref={listRef}>
-                  {moviedata.filter((show) => show.genre === props.genre).length > 0 && (
-                    moviedata.filter((show) => show.genre === props.genre).map((show, index) => (
-                      <ListItem data={show} key={index} />
-                    ))
-                  )}
-                </div>
-              )
-            }
-
+            <div className="container" ref={listRef}>
+              {moviedata.filter((show) => show.genre === props.genre).length > 0 && (
+                moviedata.filter((show) => show.genre === props.genre).map((show, index) => (
+                  <ListItem data={show} key={index} />
+                ))
+              )}
+            </div>
             <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
           </div>
         </div>
@@ -101,20 +96,13 @@ function List(props) {
           )}
           <div className="wrapper">
             <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
-            {
-              isLoading ? (
-                <Loader />
-              ) : (
-                <div className="container" ref={listRef}>
-                  {moviedata.filter((show) => show.genre === props.genre && show.isSeries).length > 0 && (
-                    moviedata.filter((show) => show.genre === props.genre && show.isSeries).map((show, index) => (
-                      <ListItem data={show} key={index} />
-                    ))
-                  )}
-                </div>
-              )
-            }
-
+            <div className="container" ref={listRef}>
+              {moviedata.filter((show) => show.genre === props.genre && show.isSeries).length > 0 && (
+                moviedata.filter((show) => show.genre === props.genre && show.isSeries).map((show, index) => (
+                  <ListItem data={show} key={index} />
+                ))
+              )}
+            </div>
             <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
           </div>
         </div>
@@ -127,20 +115,13 @@ function List(props) {
           )}
           <div className="wrapper">
             <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
-            {
-              isLoading ? (
-                <Loader />
-              ) : (
-                <div className="container" ref={listRef}>
-                  {moviedata.filter((show) => show.genre === props.genre && !show.isSeries).length > 0 && (
-                    moviedata.filter((show) => show.genre === props.genre && !show.isSeries).map((show, index) => (
-                      <ListItem data={show} key={index} />
-                    ))
-                  )}
-                </div>
-              )
-            }
-
+            <div className="container" ref={listRef}>
+              {moviedata.filter((show) => show.genre === props.genre && !show.isSeries).length > 0 && (
+                moviedata.filter((show) => show.genre === props.genre && !show.isSeries).map((show, index) => (
+                  <ListItem data={show} key={index} />
+                ))
+              )}
+            </div>
             <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
           </div>
         </div>
@@ -148,20 +129,13 @@ function List(props) {
         <div>
           <div className="wrapper">
             <ArrowBackIosNewOutlinedIcon onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }} className='sliderArrow left' />
-            {
-              isLoading ? (
-                <Loader />
-              ) : (
-                <div className="container" ref={listRef}>
-                  {mywatchlists.length > 0 && (
-                    mywatchlists.map((show, index) => (
-                      <ListItem data={show} key={index} />
-                    ))
-                  )}
-                </div>
-              )
-            }
-
+            <div className="container" ref={listRef}>
+              {mywatchlists.length > 0 && (
+                mywatchlists.map((show, index) => (
+                  <ListItem data={show} key={index} />
+                ))
+              )}
+            </div>
             <ArrowForwardIosOutlinedIcon onClick={() => handleClick("right")} className='sliderArrow right' />
           </div>
         </div>
@@ -201,9 +175,7 @@ function List(props) {
         )
       ) : (
         <></>
-      )
-
-      }
+      )}
     </div>
   )
 }

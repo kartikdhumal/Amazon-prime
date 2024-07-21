@@ -3,7 +3,8 @@ import '../styles/featured.scss'
 import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import primeintro from '../intro/primeintro.mp4'
 import { Button } from '@mui/material';
 import { toast } from 'react-toastify';
 
@@ -11,6 +12,7 @@ function Featured({ type, onTypeChange }) {
   const [moviedata, getShowData] = useState([])
   const [mydata, setMyData] = useState([])
   const [isAddedToWatchlist, setIsAddedToWatchlist] = useState(false);
+  const [isVideoLoading, setIsVideoLoading] = useState(true);
   const [watchlists, setWatchlists] = useState([]);
   const navigate = useNavigate()
 
@@ -18,7 +20,10 @@ function Featured({ type, onTypeChange }) {
     const fetchData = async () => {
       await fetch(`https://amazonprime-newserver.vercel.app/findshow/${type}`)
         .then((response) => response.json())
-        .then((data) => getShowData(data))
+        .then((data) => {
+          getShowData(data);
+          setIsVideoLoading(false);
+        })
         .catch((error) => console.error(error));
     }
     fetchData();
@@ -99,7 +104,7 @@ function Featured({ type, onTypeChange }) {
       }
     } catch (error) {
       console.error('Error adding to watchlist in client:', error);
-    toast.error('An error occurred while adding to watchlist');
+      toast.error('An error occurred while adding to watchlist');
     }
   };
 
@@ -123,7 +128,7 @@ function Featured({ type, onTypeChange }) {
     if (description) {
       const words = description.split(' ');
       if (words.length > 20) {
-        return words.slice(0,20).join(' ') + '...';
+        return words.slice(0, 20).join(' ') + '...';
       } else {
         return description;
       }
@@ -136,8 +141,19 @@ function Featured({ type, onTypeChange }) {
   return (
     <div>
       <div className="featured">
-        {mydata.seasons && mydata.seasons.length > 0 && (
-          <video autoPlay muted loop className='featuredvideo' src={mydata.seasons[mydata.seasons.length - 1].trailer}></video>
+        {isVideoLoading ? (
+          <video autoPlay muted loop className="featuredvideo" src={primeintro} />
+        ) : (
+          mydata.seasons && mydata.seasons.length > 0 && (
+            <video
+              autoPlay
+              muted
+              loop
+              className="featuredvideo"
+              src={mydata.seasons[mydata.seasons.length - 1].trailer}
+              onLoadedData={() => setIsVideoLoading(false)}
+            ></video>
+          )
         )}
         <div className="info">
           <div className="line">
@@ -159,6 +175,7 @@ function Featured({ type, onTypeChange }) {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   )

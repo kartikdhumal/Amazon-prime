@@ -35,15 +35,11 @@ function Showbycategory() {
             <div className='categorycontainer'>
                 <h2 className='cattitle'> {genre} </h2>
                 <div className='genress'>
-                    {isLoading ? (
-                        <p><Loader/></p>
-                    ) : showGenres.includes(genre) ? (
+                    {showGenres.includes(genre) && (
                         <>
                             <List title="Movie" type="categorymovies" genre={genre} />
                             <List title="Series" type="categoryseries" genre={genre} />
                         </>
-                    ) : (
-                        <p>No Shows Found</p>
                     )}
                 </div>
             </div>

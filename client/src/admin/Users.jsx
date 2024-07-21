@@ -226,7 +226,6 @@ function Users() {
                 }
 
               </td>
-
               <td style={{ width: 160 }} align="right">
                 {row.email}
               </td>

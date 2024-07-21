@@ -26,7 +26,7 @@
 }
 
 .shows {
-  background-color:#0f171e !important;
+  background-color: #00050D !important;
   padding-top: 5% !important;
   height: auto !important;
   overflow: scroll;
@@ -38,36 +38,40 @@
     padding-top: 15% !important;
   }
 
-  .filetext{
-    padding:0 10px 0 10px;
-    width:40%;
+  .filetext {
+    padding: 0 10px 0 10px;
+    width: 40%;
   }
 
-  #posters,#trailers,#fullvideos{
-    background-color:#f2f2f2;
-    width:90% !important;
-    height:1rem;
-  }
- .episodediv{
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  align-items: center;
- }
-  #episodes{
-    background-color:#f2f2f2;
-    width:auto !important;
-    height:1rem;
+  #posters,
+  #trailers,
+  #fullvideos {
+    background-color: #f2f2f2;
+    width: 90% !important;
+    height: 1rem;
   }
 
-  #episodes::file-selector-button{
-    width:100% !important;
-    position:relative !important;
+  .episodediv {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #episodes {
+    background-color: #f2f2f2;
+    width: auto !important;
+    height: 1rem;
+  }
+
+  #episodes::file-selector-button {
+    width: 100% !important;
+    position: relative !important;
     cursor: pointer !important;
     height: auto !important;
-    border:none !important;
-    background-color:#f2f2f2 !important;
-    color:transparent !important;
+    border: none !important;
+    background-color: #f2f2f2 !important;
+    color: transparent !important;
     display: flex !important;
     flex-direction: column;
     justify-content: center;
@@ -75,9 +79,10 @@
     align-items: center !important;
     margin: 0 !important;
   }
+
   .uploadedimage {
-    width:90%;
-    height:auto;
+    width: 90%;
+    height: auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
     margin-right: auto;
@@ -86,19 +91,21 @@
     border-style: solid;
     border-color: #d1d5db;
   }
-  
+
   .videoshow {
     width: 100%;
   }
-  
-  #posters::file-selector-button , #trailers::file-selector-button , #fullvideos::file-selector-button{
-    width:100% !important;
-    position:relative !important;
+
+  #posters::file-selector-button,
+  #trailers::file-selector-button,
+  #fullvideos::file-selector-button {
+    width: 100% !important;
+    position: relative !important;
     cursor: pointer !important;
     height: auto !important;
-    border:none !important;
-    background-color:#f2f2f2 !important;
-    color:transparent !important;
+    border: none !important;
+    background-color: #f2f2f2 !important;
+    color: transparent !important;
     display: flex !important;
     flex-direction: column;
     justify-content: center;
@@ -106,69 +113,84 @@
     align-items: center !important;
     margin: 0 !important;
   }
+
   .posterimage {
     width: 100px !important;
   }
+
   .seasons {
-    width: 100%;  
+    width: 100%;
   }
+
   .casts {
-    width:100%;  
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .season-content , .castsbox{
-    width:90%;
+
+  .season-content,
+  .castsbox {
+    width: 90%;
   }
-  .seasonbox{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  gap: 10px;
+
+  .seasonbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    gap: 10px;
   }
-   .seasontext , .episodetext{
-    margin:5px 0 5px 0;
+
+  .seasontext,
+  .episodetext {
+    margin: 5px 0 5px 0;
     font-weight: bold;
     text-align: center;
     font-size: 20px;
-   }
-  .addepisode , .removeepisode , .removecast , .addmorecast{
-        height:auto !important;
-        width:auto;
-        border-radius: 5px;
-        background-color:#00a8e1;
-        margin:5px 0 5px 0;
-        color: white;
-        font-weight:900 !important;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        font-size: 18px;
-        padding: 4px 4px;
-        font-weight: 500;
-        cursor: pointer;
   }
-  .addseason , .addcast{
-    height:auto !important;
-    width:100% !important;
+
+  .addepisode,
+  .removeepisode,
+  .removecast,
+  .addmorecast {
+    height: auto !important;
+    width: auto;
     border-radius: 5px;
     background-color: #00a8e1;
-    margin:5px 0 5px 0;
-    color: white; 
-    font-weight:900 !important;
+    margin: 5px 0 5px 0;
+    color: white;
+    font-weight: 900 !important;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
     font-size: 18px;
-    padding:9px 3px;
+    padding: 4px 4px;
     font-weight: 500;
     cursor: pointer;
   }
+
+  .addseason,
+  .addcast {
+    height: auto !important;
+    width: 100% !important;
+    border-radius: 5px;
+    background-color: #00a8e1;
+    margin: 5px 0 5px 0;
+    color: white;
+    font-weight: 900 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 18px;
+    padding: 9px 3px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
   .addform {
     width: auto !important;
     display: flex !important;
@@ -203,10 +225,10 @@
 
 
       input {
-        padding:9px 3px;
-        width:100%;
+        padding: 9px 3px;
+        width: 100%;
         margin: 4px 1px;
-        border-radius:5px;
+        border-radius: 5px;
         font-size: 15px;
 
         &::placeholder {
@@ -223,8 +245,8 @@
         margin: 4px 1px;
       }
 
-      .addshowbtn{
-        height:35px !important;
+      .addshowbtn {
+        height: 35px !important;
         width: 100%;
         border-radius: 5px;
         background-color: #00a8e1;
@@ -247,32 +269,37 @@
   .deleteicons {
     color: red;
   }
-  .search{
+
+  .search {
     width: auto;
     display: flex;
     justify-content: start;
     align-items: center;
-    width:auto !important;
+    width: auto !important;
     flex-direction: column;
-    padding-top:20px;
+    padding-top: 20px;
     padding-left: 40px;
     padding-right: 40px;
-    @include tablet{
-      padding-left:4px;
-      width:auto;
-      margin-bottom:10px;
-      padding-right:4px;
+
+    @include tablet {
+      padding-left: 4px;
+      width: auto;
+      margin-bottom: 10px;
+      padding-right: 4px;
       background-color: #0b0b0b;
     }
-    @include mobile{
-      width:100%;
+
+    @include mobile {
+      width: 100%;
     }
-    .searchbox{
-      padding:10px 10px;
+
+    .searchbox {
+      padding: 10px 10px;
       border-radius: 10px;
-      width:50% !important;
-      @include mobile{
-        width:85% !important; 
+      width: 50% !important;
+
+      @include mobile {
+        width: 85% !important;
       }
     }
   }

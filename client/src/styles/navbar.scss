@@ -20,30 +20,51 @@
   }
 }
 
+.mynavbarbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:70% !important;
+  border:2px solid #00a8e1 !important;
+}
 
 .navbar {
-  width: 100%;
   font-size: 18px;
   position: fixed;
-  top: 0;
+  width:100% !important;
+  top:5px;
+  align-self: center !important;
+  display: flex;
+  flex-direction: row;
+  background-color: transparent !important;
+  justify-content: center;
   z-index: 999;
-  background-color: #0f171e;
-
+  @include tablet {
+    top:0px;
+  }
+  @include mobile{
+    top:0px;
+  }
 
   .container {
+    background-color:#00050D !important;
     padding: 0px 0px;
+    width:70% !important;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
     height: 70px;
 
     @include mobile {
       display: flex;
+      width:100% !important;
       justify-content: left;
     }
 
     @include tablet {
       display: flex;
+      width: 100% !important;
       justify-content: space-between;
     }
 
@@ -93,14 +114,15 @@
       @include tablet {
         display: none;
         flex-direction: column;
-        justify-content: center;
-       position: absolute;
+        position: absolute;
+        border: 1px solid white;
         align-items: center;
+        width: auto;
         left: 0;
         top: 10%;
         margin-top: auto;
         height: auto;
-        background-color: #0f171e;
+        background-color: #00050D;
         padding: 20px;
       }
 
@@ -108,13 +130,13 @@
         color: inherit;
         text-decoration: none;
         font-weight: bold;
-        color:gray;
+        color: gray;
 
         &:hover {
           color: #f2f2f2;
         }
       }
- 
+
       .closeicon {
         display: none;
 
@@ -168,20 +190,20 @@
       align-items: center;
       justify-content: space-evenly !important;
       width: 10% !important;
-      margin-right: 50px; 
+      margin-right: 50px;
 
       @include mobile {
         width: auto !important;
         display: flex !important;
-        justify-content:center !important;
+        justify-content: center !important;
         align-items: center !important;
-        margin-right:0px;
+        margin-right: 0px;
       }
 
       @include tablet {
         display: flex;
         justify-content: space-between;
-        width:35% !important;
+        width: 35% !important;
       }
 
       @include minimobile {
@@ -200,7 +222,7 @@
       }
 
       .searchbox {
-        background-color:#0f171e;
+        background-color: #0f171e;
         padding: 20px;
         position: absolute;
         top: 100%;
@@ -210,15 +232,15 @@
         width: 53%;
 
         @include mobile {
-          width:90% !important;
+          width: 90% !important;
           padding: 20px;
         }
 
-        .search{
+        .search {
           font-size: 22px !important;
 
           @include tablet {
-            font-size:16px !important;
+            font-size: 16px !important;
           }
         }
       }
@@ -241,7 +263,7 @@
         }
 
         @include mobile {
-         font-size: 20px !important;
+          font-size: 20px !important;
         }
       }
 
@@ -249,7 +271,7 @@
         position: absolute;
         top: 235%;
         left: 50%;
-        width:55%;
+        width: 55%;
         transform: translateX(-50%);
         background-color: #0f171e;
         border: 1px solid #000000;
@@ -257,35 +279,38 @@
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         z-index: 999;
+
         @include tablet {
           top: 235%;
-          width:95%;
+          width: 95%;
         }
 
         .search-result-item {
           display: flex;
           align-items: center;
-          justify-content:space-around;
-          margin-top:10px;
+          justify-content: space-around;
+          margin-top: 10px;
           margin-bottom: 5px;
           border-radius: 10px;
-          padding:7px;
+          padding: 7px;
           cursor: pointer;
-          &:hover{
+
+          &:hover {
             background-color: #f2f2f2;
-  
-            .showtitle{
+
+            .showtitle {
               color: #0f171e !important;
             }
+
             @include tablet {
-              font-size:16px !important;
+              font-size: 16px !important;
             }
           }
 
           .poster {
-            width:10%;
+            width: 10%;
             height: auto;
-            margin:0px;
+            margin: 0px;
             padding: 0px;
           }
 
@@ -293,18 +318,20 @@
             font-size: 22px;
             font-weight: bold;
             color: #f2f2f2;
-            padding-left:20px;
-            width:75% !important;
+            padding-left: 20px;
+            width: 75% !important;
+
             @include tablet {
-              font-size:16px !important;
+              font-size: 16px !important;
             }
           }
-          .resultyear{
-            color:gray;
-            width:25%;
+
+          .resultyear {
+            color: gray;
+            width: 25%;
             font-size: 20px;
             font-weight: bold;
-            text-align:left;
+            text-align: left;
           }
         }
       }
