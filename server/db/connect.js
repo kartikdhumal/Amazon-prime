@@ -3,13 +3,10 @@ import 'dotenv/config';
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URL, {
-            useUnifiedTopology: true,
-            useNewUrlParser: true
-        });
-        console.log(`Connection Successful : ${process.env.JWT_SECRET}`);
-    } catch (err) {
-        console.error('Connection Error:', err);
+        await mongoose.connect(process.env.MONGODB_URL);
+        console.log('Database connected successfully');
+    } catch (error) {
+        console.error('Database connection error:', error);
     }
 };
 
