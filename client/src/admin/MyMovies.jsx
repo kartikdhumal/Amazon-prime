@@ -19,7 +19,7 @@ function MyShows() {
   const uniqueGenres = Array.from(new Set(moviedata.map(data => data.genre)));
 
   const fetchData = () => {
-    fetch('https://amazon-prime-server.vercel.app/findshow')
+    fetch('https://amazonprime-newserver.vercel.app/findshow')
       .then((response) => response.json())
       .then((data) => {
         getShowData(data);

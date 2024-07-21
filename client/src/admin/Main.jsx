@@ -16,17 +16,17 @@ function Main() {
   // }, [navigate]);
 
   useEffect(() => {
-    fetch('https://amazon-prime-server.vercel.app/countAdminUsers')
+    fetch('https://amazonprime-newserver.vercel.app/countAdminUsers')
       .then((response) => response.json())
       .then((data) => setAdminCount(data.count))
       .catch((error) => console.error(error));
 
-      fetch('https://amazon-prime-server.vercel.app/countShows')
+      fetch('https://amazonprime-newserver.vercel.app/countShows')
       .then((response) => response.json())
       .then((data) => setShowCount(data.count))
       .catch((error) => console.error(error));
 
-      fetch('https://amazon-prime-server.vercel.app/countMovies')
+      fetch('https://amazonprime-newserver.vercel.app/countMovies')
       .then((response) => response.json())
       .then((data) => setMovieCount(data.count))
       .catch((error) => console.error(error));

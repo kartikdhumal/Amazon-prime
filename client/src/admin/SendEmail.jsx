@@ -23,7 +23,7 @@ function SendEmail() {
 
 
     const fetchUsers = () => {
-        fetch('https://amazon-prime-server.vercel.app/finduser')
+        fetch('https://amazonprime-newserver.vercel.app/finduser')
             .then((response) => response.json())
             .then((data) => {
                 setUserData(data);

@@ -31,7 +31,7 @@ function Watch() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await Axios.get(`https://amazon-prime-server.vercel.app/watch/${id}`);
+        const response = await Axios.get(`https://amazonprime-newserver.vercel.app/watch/${id}`);
         if (response.status >= 200 && response.status < 300) {
           const data = response.data[0];
           const lastSeason = data.seasons[data.seasons.length - 1];

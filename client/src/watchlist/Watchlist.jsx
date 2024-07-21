@@ -23,7 +23,7 @@ function Watchlist() {
     }, [moviedata]);
 
     const handleDelete = (showId) => {
-        fetch(`https://amazon-prime-server.vercel.app/deletewatchlist/${sessionStorage.myuserid}/${showId}`, {
+        fetch(`https://amazonprime-newserver.vercel.app/deletewatchlist/${sessionStorage.myuserid}/${showId}`, {
           method: "DELETE"
         })
           .then((response) => {
@@ -41,7 +41,7 @@ function Watchlist() {
 
 
     const fetchData = () => {
-        fetch('https://amazon-prime-server.vercel.app/findshow')
+        fetch('https://amazonprime-newserver.vercel.app/findshow')
             .then((response) => response.json())
             .then((data) => {
                 getShowData(data);
@@ -55,7 +55,7 @@ function Watchlist() {
 
     const fetchMyWatchlists = () => {
         const userId = sessionStorage.myuserid;
-        fetch('https://amazon-prime-server.vercel.app/watchlists')
+        fetch('https://amazonprime-newserver.vercel.app/watchlists')
             .then((response) => response.json())
             .then((data) => {
                 if (Array.isArray(data) && data.length > 0 && data[0].hasOwnProperty('userId') && data[0].hasOwnProperty('showIds')) {

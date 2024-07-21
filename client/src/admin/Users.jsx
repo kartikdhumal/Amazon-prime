@@ -31,7 +31,7 @@ function Users() {
   };
 
   const fetchData = () => {
-    fetch('https://amazon-prime-server.vercel.app/finduser')
+    fetch('https://amazonprime-newserver.vercel.app/finduser')
       .then((response) => response.json())
       .then((data) => {
         getUserData(data);
@@ -48,7 +48,7 @@ function Users() {
   }, [searchQuery, userdata]);
 
   const handleDelete = (recordId) => {
-    Axios.delete(`https://amazon-prime-server.vercel.app/deleteuser/${recordId}`)
+    Axios.delete(`https://amazonprime-newserver.vercel.app/deleteuser/${recordId}`)
       .then((response) => {
         fetchData();
       })
@@ -137,7 +137,7 @@ function Users() {
         alert('User already exists with this email');
         return;
       }
-      const sendData = await Axios.post('https://amazon-prime-server.vercel.app/users', {
+      const sendData = await Axios.post('https://amazonprime-newserver.vercel.app/users', {
         username: formData.username,
         email: formData.email,
         password: bcrypt.hashSync(formData.password, 8),

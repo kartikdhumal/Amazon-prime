@@ -47,7 +47,7 @@ function Login() {
       }
 
       const response = await Axios.post(
-        'https://amazon-prime-server.vercel.app/login',
+        'https://amazonprime-newserver.vercel.app/login',
         {
           email: email,
           password: password,

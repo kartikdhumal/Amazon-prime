@@ -13,7 +13,7 @@ function List(props) {
   const [mywatchlists, setmywatchlists] = useState([]);
   const listRef = useRef();
   const fetchData = () => {
-    fetch('https://amazon-prime-server.vercel.app/findshow')
+    fetch('https://amazonprime-newserver.vercel.app/findshow')
       .then((response) => response.json())
       .then((data) => {
         getShowData(data);
@@ -34,7 +34,7 @@ function List(props) {
 
   const fetchmywatchlists = () => {
     const userId = sessionStorage.myuserid;
-    fetch('https://amazon-prime-server.vercel.app/watchlists')
+    fetch('https://amazonprime-newserver.vercel.app/watchlists')
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0 && data[0].hasOwnProperty('userId') && data[0].hasOwnProperty('showIds')) {

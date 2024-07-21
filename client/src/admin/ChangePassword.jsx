@@ -28,7 +28,7 @@ function ChangePassword() {
   }, []);
 
   const fetchUserData = () => {
-    axios.get('https://amazon-prime-server.vercel.app/finduser')
+    axios.get('https://amazonprime-newserver.vercel.app/finduser')
       .then(response => {
         setUserData(response.data);
       })
@@ -56,7 +56,7 @@ function ChangePassword() {
     } else {
       setIsLoading(true);
       try {
-        const response = await fetch(`https://amazon-prime-server.vercel.app/editprofile/${id}`, {
+        const response = await fetch(`https://amazonprime-newserver.vercel.app/editprofile/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

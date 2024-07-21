@@ -15,7 +15,7 @@ function Deleteuser() {
     //     },[navigate])
        UnauthorizeAdmin()
         const handleDelete = () => {
-          Axios.delete(`https://amazon-prime-server.vercel.app/deleteuser/${id}`)
+          Axios.delete(`https://amazonprime-newserver.vercel.app/deleteuser/${id}`)
             .then((response) => {
               navigate('/users');
             })

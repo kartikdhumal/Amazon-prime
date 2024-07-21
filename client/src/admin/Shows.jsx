@@ -56,7 +56,7 @@ function Shows() {
 
 
   const fetchData = () => {
-    fetch('https://amazon-prime-server.vercel.app/findshow')
+    fetch('https://amazonprime-newserver.vercel.app/findshow')
       .then((response) => response.json())
       .then((data) => {
         getShowData(data);
@@ -65,7 +65,7 @@ function Shows() {
   }
 
   const handleDelete = (recordId) => {
-    axios.delete(`https://amazon-prime-server.vercel.app/deleteshow/${recordId}`)
+    axios.delete(`https://amazonprime-newserver.vercel.app/deleteshow/${recordId}`)
       .then((response) => {
         fetchData();
       })

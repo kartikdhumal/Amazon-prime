@@ -15,7 +15,7 @@ function Showbycategory() {
     }, []);
 
     const fetchData = () => {
-        fetch('https://amazon-prime-server.vercel.app/findshow')
+        fetch('https://amazonprime-newserver.vercel.app/findshow')
             .then((response) => response.json())
             .then((data) => {
                 const genres = data.map((show) => show.genre);

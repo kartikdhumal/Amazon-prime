@@ -35,7 +35,7 @@ function ListItem({ index, data }) {
   };
 
   const fetchWatchLists = () => {
-    fetch('https://amazon-prime-server.vercel.app/watchlists')
+    fetch('https://amazonprime-newserver.vercel.app/watchlists')
       .then((response) => response.json())
       .then((datas) => {
         if (datas[0]?.showIds.includes(data._id)) {
@@ -46,7 +46,7 @@ function ListItem({ index, data }) {
   }
 
   const handleDelete = () => {
-    fetch(`https://amazon-prime-server.vercel.app/deletewatchlist/${sessionStorage.myuserid}/${data._id}`, {
+    fetch(`https://amazonprime-newserver.vercel.app/deletewatchlist/${sessionStorage.myuserid}/${data._id}`, {
       method: "DELETE"
     })
       .then((response) => {
@@ -76,7 +76,7 @@ function ListItem({ index, data }) {
         return;
       }
 
-      const response = await fetch('https://amazon-prime-server.vercel.app/addwatchlist', {
+      const response = await fetch('https://amazonprime-newserver.vercel.app/addwatchlist', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

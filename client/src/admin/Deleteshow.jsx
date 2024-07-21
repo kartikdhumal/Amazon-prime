@@ -19,7 +19,7 @@ UnauthorizeAdmin()
         },[])
   
         const handleDelete = () => {
-          Axios.delete(`https://amazon-prime-server.vercel.app/deleteshow/${id}`)
+          Axios.delete(`https://amazonprime-newserver.vercel.app/deleteshow/${id}`)
             .then((response) => {
               navigate('/shows');
             })

@@ -16,7 +16,7 @@ function Featured({ type, onTypeChange }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetch(`https://amazon-prime-server.vercel.app/findshow/${type}`)
+      await fetch(`https://amazonprime-newserver.vercel.app/findshow/${type}`)
         .then((response) => response.json())
         .then((data) => getShowData(data))
         .catch((error) => console.error(error));
@@ -40,7 +40,7 @@ function Featured({ type, onTypeChange }) {
   };
 
   const fetchWatchLists = () => {
-    fetch('https://amazon-prime-server.vercel.app/watchlists')
+    fetch('https://amazonprime-newserver.vercel.app/watchlists')
       .then((response) => response.json())
       .then((datas) => {
         if (datas[0]?.showIds.includes(mydata._id)) {
@@ -51,7 +51,7 @@ function Featured({ type, onTypeChange }) {
   }
 
   const handleDelete = () => {
-    fetch(`https://amazon-prime-server.vercel.app/deletewatchlist/${sessionStorage.myuserid}/${mydata._id}`, {
+    fetch(`https://amazonprime-newserver.vercel.app/deletewatchlist/${sessionStorage.myuserid}/${mydata._id}`, {
       method: "DELETE"
     })
       .then((response) => {
@@ -81,7 +81,7 @@ function Featured({ type, onTypeChange }) {
         return;
       }
 
-      const response = await fetch('https://amazon-prime-server.vercel.app/addwatchlist', {
+      const response = await fetch('https://amazonprime-newserver.vercel.app/addwatchlist', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

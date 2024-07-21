@@ -47,7 +47,7 @@ function Navbar() {
   }, [])
 
   const fetchData = () => {
-    fetch('https://amazon-prime-server.vercel.app/findshow')
+    fetch('https://amazonprime-newserver.vercel.app/findshow')
       .then((response) => response.json())
       .then((data) => {
         getShowData(data);
