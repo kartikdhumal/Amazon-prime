@@ -5,6 +5,7 @@ import '../styles/watchlist.scss';
 import Loader from '../loader/Loader';
 import { NavLink } from 'react-router-dom';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import axios from 'axios';
 
 function Watchlist() {
     const listRef = useRef();
@@ -22,22 +23,22 @@ function Watchlist() {
         }
     }, [moviedata]);
 
-    const handleDelete = (showId) => {
-        fetch(`https://amazonprime-newserver.vercel.app/deletewatchlist/${sessionStorage.myuserid}/${showId}`, {
-          method: "DELETE"
-        })
-          .then((response) => {
-            if (response.ok) {
-             fetchData();
-             fetchMyWatchlists()
+
+    const handleDelete = async (showId) => {
+        try {
+            const userId = sessionStorage.myuserid;
+            const response = await axios.delete(`http://localhost:6001/deletewatchlist/${userId}/${showId}`);
+            if (response.status >= 200 && response.status < 300) {
+                console.log('Delete successful');
+                fetchData();
+                fetchMyWatchlists();
             } else {
-              console.error('Error deleting record:', response.statusText);
+                console.error('Error deleting record:', response.statusText);
             }
-          })
-          .catch((error) => {
+        } catch (error) {
             console.error('Error deleting record:', error);
-          });
-      };
+        }
+    };
 
 
     const fetchData = () => {
@@ -93,7 +94,7 @@ function Watchlist() {
                                 </NavLink>
                                 <span className='resultyear'>{result.seasons[result.seasons.length - 1].year}</span>
                                 <span>
-                                    <RemoveCircleOutlineIcon className='removeicon' onClick={() => handleDelete(result._id)}/>
+                                    <RemoveCircleOutlineIcon className='removeicon' onClick={() => handleDelete(result._id)} />
                                 </span>
                             </div>
                         ))

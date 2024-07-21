@@ -33,19 +33,23 @@ function Watch() {
       try {
         const response = await Axios.get(`https://amazonprime-newserver.vercel.app/watch/${id}`);
         if (response.status >= 200 && response.status < 300) {
-          const data = response.data[0];
-          const lastSeason = data.seasons[data.seasons.length - 1];
-          const firstEpisode = lastSeason.episodes[0];
-          setsdata(data);
-          setLoaded(true);
-          setIsMovie(data.isSeries);
-          setShowData(firstEpisode.video);
-          setSeasons(data.seasons);
-          setEpisodes(lastSeason.episodes);
-          setCastMembers(data.castMembers);
-          setSelectedSeason(lastSeason);
-          setIsFetched(true);
-          setSelectedEpisode(firstEpisode);
+          const data = response.data;
+          if (data) {
+            const lastSeason = data.seasons[data.seasons.length - 1];
+            const firstEpisode = lastSeason.episodes[0];
+            setsdata(data);
+            setLoaded(true);
+            setIsMovie(data.isSeries);
+            setShowData(firstEpisode.video);
+            setSeasons(data.seasons);
+            setEpisodes(lastSeason.episodes);
+            setCastMembers(data.castMembers);
+            setSelectedSeason(lastSeason);
+            setIsFetched(true);
+            setSelectedEpisode(firstEpisode);
+          } else {
+            console.error('No data found for the given ID');
+          }
         } else {
           throw new Error('Network response was not ok');
         }

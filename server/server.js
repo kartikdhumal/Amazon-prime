@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser';
@@ -6,9 +7,9 @@ import homeRoutes from './routers/home.route.js'
 import userRoutes from './routers/user.route.js'
 import showRoutes from './routers/show.route.js'
 import watchlistRoutes from './routers/watchlist.route.js'
-import 'dotenv/config';
 
 const app = express();
+app.use(express.json());
 const corsConfig = {
   origin: '*',
   credentials: true,

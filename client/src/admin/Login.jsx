@@ -67,16 +67,16 @@ function Login() {
         toast.warning('Incorrect Password');
         setPassword("");
       } else if (response.data && response.data.success) {
-        if (response.data.isadmin === true) {
-          toast.info('Login successful');
-          sessionStorage.setItem('userid', response.data.userid);
+        if (response.data.isAdmin) {
+          toast.info('Logged in as admin successfully');
+          sessionStorage.setItem('userid', response.data.userId);
           sessionStorage.setItem('email', response.data.email);
           setEmail("");
           setPassword("");
           navigate('/admin');
         } else {
           toast.info('Login successful');
-          sessionStorage.setItem('myuserid', response.data.userid);
+          sessionStorage.setItem('myuserid', response.data.userId);
           sessionStorage.setItem('email', response.data.email);
           setEmail("");
           setPassword("");
@@ -86,7 +86,7 @@ function Login() {
         toast.error('Something went wrong');
         setEmail("");
         setPassword("");
-      }
+      };
     } catch (error) {
       console.error('Try Again!', error);
       setEmail("");

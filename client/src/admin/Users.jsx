@@ -216,7 +216,7 @@ function Users() {
                     month: '2-digit',
                     year: 'numeric'
                   })
-                } - {' '}
+                }  {'  -  '}
                 {
                   new Date(row.createdAt).toLocaleTimeString('en-IN', {
                     hour: '2-digit',

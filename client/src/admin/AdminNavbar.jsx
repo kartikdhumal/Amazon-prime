@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../styles/addnavbar.scss'
 import netflix from '../images/amazonprime.png'
 import MenuIcon from '@mui/icons-material/Menu';
-import { NavLink , useNavigate} from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -20,24 +20,23 @@ import { toast } from 'react-toastify';
 function Navbar() {
   const id = sessionStorage.userid;
   const navigate = useNavigate()
-  const handleLogout = () =>
-  { 
-        sessionStorage.removeItem("userid");
-        toast.info("Logged out");
-        navigate('/login');
+  const handleLogout = () => {
+    sessionStorage.removeItem("userid");
+    toast.info("Logged out");
+    navigate('/login');
   }
-   UnauthorizeAdmin()
+  UnauthorizeAdmin()
 
-   const [anchorEl, setAnchorEl] = React.useState(null);
-   const open = Boolean(anchorEl);
-   const handleClick = (event) => {
-     setAnchorEl(event.currentTarget);
-   };
-   const handleClose = () => {
-     setAnchorEl(null);
-   };
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-  const openNavbar = () =>{
+  const openNavbar = () => {
     const elementToToggle = document.getElementById('elementToToggle');
     const toggleButton = document.getElementById('toggleButton');
     const middlelogo = document.getElementById('middlelogo');
@@ -55,38 +54,38 @@ function Navbar() {
     const toggleButton = document.getElementById('toggleButton');
     const middlelogo = document.getElementById('middlelogo');
     if (elementToToggle.style.display === 'block' || elementToToggle.style.display === '') {
-      elementToToggle.style.display = 'none'; 
+      elementToToggle.style.display = 'none';
       toggleButton.style.display = 'block';
       // middlelogo.style.display = 'block';
-// Show the element
+      // Show the element
     } else {
-      elementToToggle.style.display = 'block'; 
+      elementToToggle.style.display = 'block';
     }
   }
-    const [isScrolled,setIsScrolled ] = useState(false);
-    window.onscroll = () =>{
-        setIsScrolled(window.pageYOffset === 0 ? false : true);
-        return () => (window.onscroll = null);
-    };
-   
+  const [isScrolled, setIsScrolled] = useState(false);
+  window.onscroll = () => {
+    setIsScrolled(window.pageYOffset === 0 ? false : true);
+    return () => (window.onscroll = null);
+  };
+
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar scrolled"}>
-       <div className='container'>
+      <div className='container'>
         <div className='left'>
           <img src={netflix} alt='logo'></img>
         </div>
         <div className="sidebar" id='elementToToggle'>
-            <ul >
-                <li><MenuIcon className='closeicon' onClick={closeNavbar}/></li>
-                <li> <NavLink style={({ isActive }) => { return isActive ? { color : "#00a8e1" , transition : "0.175s ease-in-out "} : {}}} to="/admin"> Home </NavLink> </li>
-                <li> <NavLink style={({ isActive }) => { return isActive ? { color : "#00a8e1" , transition : "0.175s ease-in-out "} : {}}} to="/users"> Users </NavLink> </li>
-                <li> <NavLink style={({ isActive }) => { return isActive ? { color : "#00a8e1" , transition : "0.175s ease-in-out "} : {}}} to="/shows"> Shows </NavLink> </li>
-            </ul>
-         </div>
-         <MenuIcon className='menuicon' onClick={openNavbar} id="toggleButton"/>
+          <ul >
+            <li><MenuIcon className='closeicon' onClick={closeNavbar} /></li>
+            <li> <NavLink style={({ isActive }) => { return isActive ? { color: "#00a8e1", transition: "0.175s ease-in-out " } : {} }} to="/admin"> Home </NavLink> </li>
+            <li> <NavLink style={({ isActive }) => { return isActive ? { color: "#00a8e1", transition: "0.175s ease-in-out " } : {} }} to="/users"> Users </NavLink> </li>
+            <li> <NavLink style={({ isActive }) => { return isActive ? { color: "#00a8e1", transition: "0.175s ease-in-out " } : {} }} to="/shows"> Shows </NavLink> </li>
+          </ul>
+        </div>
+        <MenuIcon className='menuicon' onClick={openNavbar} id="toggleButton" />
         <img src={netflix} alt='logo' id='middlelogos' className='middlelogos'></img>
         <div className='rightside'>
-                    <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
             <Tooltip title="Profile">
               <IconButton
                 onClick={handleClick}
@@ -150,7 +149,7 @@ function Navbar() {
               <ListItemIcon>
                 <Settings fontSize="small" sx={{ color: "#f2f2f2" }} />
               </ListItemIcon>
-              <NavLink style={{ color: "#f2f2f2" }} to={`/editprofile/${sessionStorage.myuserid}`}>Profile</NavLink>
+              <NavLink style={{ color: "#f2f2f2" }} to={`/editprofile/${sessionStorage.userid}`}>Profile</NavLink>
             </MenuItem>
             <MenuItem onClick={handleLogout}>
               <ListItemIcon>
@@ -160,7 +159,7 @@ function Navbar() {
             </MenuItem>
           </Menu>
         </div>
-        </div> 
+      </div>
     </div>
   )
 }

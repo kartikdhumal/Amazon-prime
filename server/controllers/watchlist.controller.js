@@ -1,4 +1,5 @@
 import Watchlist from "../models/Watchlist.models.js";
+import mongoose from "mongoose";
 
 export const addWatchlist = async (req, res) => {
     try {
@@ -51,13 +52,23 @@ export const deleteWatchlist = async (req, res) => {
             return res.status(400).json({ message: 'User ID and Show ID are required' });
         }
 
+        if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(showId)) {
+            return res.status(400).json({ message: 'Invalid User ID or Show ID' });
+        }
+
         const watchlist = await Watchlist.findOne({ userId });
 
         if (!watchlist) {
             return res.status(404).json({ message: 'Watchlist not found' });
         }
 
-        watchlist.showIds = watchlist.showIds.filter(id => id !== showId);
+        const initialLength = watchlist.showIds.length;
+        watchlist.showIds = watchlist.showIds.filter(id => id.toString() !== showId.toString());
+
+        if (watchlist.showIds.length === initialLength) {
+            return res.status(404).json({ message: 'Show ID not found in watchlist' });
+        }
+
         await watchlist.save();
 
         res.status(200).json({ message: 'Watchlist item deleted successfully', watchlist });
