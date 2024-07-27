@@ -131,10 +131,10 @@ function ListItem({ index, data }) {
   return (
     <div className='listcard' style={{ left: isHovered ? index * 225 - 50 + index * 2.5 : 0 }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       {loading ? (
-        <Skeleton variant="rectangular" width={210} height={118} sx={{ bgcolor: "#33373D" , borderRadius : "10px" }} />
+        <Skeleton variant="rectangular" width={210} height={118} sx={{ bgcolor: "#33373D", borderRadius: "10px" }} />
       ) : (
         <>
-          <img src={data.poster} alt='Show poster' onClick={handleOpen} className='listposter' />
+          <img src={data.poster} alt={data.title + " " + data.seasons.length > 1 ? data.seasons.length : ""} onClick={handleOpen} className='listposter' />
           <Modal open={open} onClose={handleClose} className='model' sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Box sx={{ width: 300, bgcolor: '#000000', color: '#f2f2f2', border: "1px solid gray", borderRadius: "10px", p: 2, outline: 'none' }}>
               <CardMedia component='video' src={data.seasons[data.seasons.length - 1].trailer} muted autoPlay type="video/mp4" className='listvideo' />
